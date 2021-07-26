@@ -14,7 +14,7 @@
 - [정렬 알고리즘](https://github.com/choidoorim/TIL/blob/main/Algorithm/20210621_sort.md)
 
 #### :pushpin: Javascript Study
-- [Data Type, Operator, for loop, if](https://github.com/choidoorim/TIL/blob/main/Javascript/20210718_Operator.md)
+- [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Javascript/20210718_Operator.md)
 - [Function](https://github.com/choidoorim/TIL/blob/main/Javascript/20210719_Function.md)
 - [Class and Object](https://github.com/choidoorim/TIL/blob/main/Javascript/20210720_ClassObject.md)
 - [Array](https://github.com/choidoorim/TIL/blob/main/Javascript/20210721_Array.md)
