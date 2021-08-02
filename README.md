@@ -22,7 +22,7 @@
 - [Callback](https://github.com/choidoorim/TIL/blob/main/Javascript/20210723_Callback.md)
 - [Promise](https://github.com/choidoorim/TIL/blob/main/Javascript/20210724_Promise.md)
 - [Async and Await](https://github.com/choidoorim/TIL/blob/main/Javascript/20210724_AsyncAwait.md)
-- [ETC]()
+- [ETC](https://github.com/choidoorim/TIL/blob/main/Javascript/20210731_ETC.md)
 
 #### :pushpin: TDD
 - [TDD_Basic](https://github.com/choidoorim/TIL/blob/main/TDD/20210728_TDDbasic.md)
