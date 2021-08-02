@@ -25,4 +25,4 @@
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Javascript/20210731_ETC.md)
 
 #### :pushpin: TDD
-- [TDD_Basic](https://github.com/choidoorim/TIL/blob/main/TDD/20210728_TDDbasic.md)
+- [TDD_Basic](https://github.com/choidoorim/TIL/blob/main/TDD/20210728.md)
