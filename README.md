@@ -25,7 +25,7 @@
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Javascript/20210731_ETC.md)
 
 #### :pushpin: Network
-- [OSI 7Layer]()
+- [OSI 7Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210810_OSI7.md)
 
 #### :pushpin: TDD
 - [TDD_Basic](https://github.com/choidoorim/TIL/blob/main/TDD/20210728.md)
