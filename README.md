@@ -12,6 +12,7 @@
 - [구현 알고리즘](https://github.com/choidoorim/TIL/blob/main/Algorithm/20210617_implement.md)
 - [Dfs, Bfs 알고리즘](https://github.com/choidoorim/TIL/blob/main/Algorithm/20210620_DfsBfs.md)
 - [정렬 알고리즘](https://github.com/choidoorim/TIL/blob/main/Algorithm/20210621_sort.md)
+- [이진탐색 알고리즘](https://github.com/choidoorim/TIL/blob/main/Algorithm/20210621_sort.md)
 
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Javascript/20210718_Operator.md)
