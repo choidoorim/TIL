@@ -14,6 +14,10 @@
 - [정렬 알고리즘](https://github.com/choidoorim/TIL/blob/main/Algorithm/20210621_sort.md)
 - [이진탐색 알고리즘](https://github.com/choidoorim/TIL/blob/main/Algorithm/20210621_sort.md)
 
+#### :pushpin: Network
+- [OSI 7Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210810_OSI7.md)
+- [TCP/IP Protocol](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210814_TCPIP.md)
+
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Javascript/20210718_Operator.md)
 - [Function](https://github.com/choidoorim/TIL/blob/main/Javascript/20210719_Function.md)
@@ -24,10 +28,6 @@
 - [Promise](https://github.com/choidoorim/TIL/blob/main/Javascript/20210724_Promise.md)
 - [Async and Await](https://github.com/choidoorim/TIL/blob/main/Javascript/20210724_AsyncAwait.md)
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Javascript/20210731_ETC.md)
-
-#### :pushpin: Network
-- [OSI 7Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210810_OSI7.md)
-- [TCP/IP Protocol](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210814_TCPIP.md)
 
 #### :pushpin: TDD
 - [TDD_Basic](https://github.com/choidoorim/TIL/blob/main/TDD/20210728.md)
