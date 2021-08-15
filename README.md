@@ -17,6 +17,7 @@
 #### :pushpin: Network
 - [OSI 7Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210810_OSI7.md)
 - [TCP/IP Protocol](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210814_TCPIP.md)
+- [LAN](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210815-LAN.md)
 
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Javascript/20210718_Operator.md)
