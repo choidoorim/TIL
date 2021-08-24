@@ -13,13 +13,15 @@
 - [Dfs, Bfs 알고리즘](https://github.com/choidoorim/TIL/blob/main/Algorithm/20210620_DfsBfs.md)
 - [정렬 알고리즘](https://github.com/choidoorim/TIL/blob/main/Algorithm/20210621_sort.md)
 - [이진탐색 알고리즘](https://github.com/choidoorim/TIL/blob/main/Algorithm/20210621_sort.md)
+- [다이나믹 프로그래밍]()
 
 #### :pushpin: Network
 - [OSI 7Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210810_OSI7.md)
 - [TCP/IP Protocol](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210814_TCPIP.md)
 - [LAN](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210815-LAN.md)
 - [Internet/Network Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210817_Network.md)
-- [Transport Layer]()
+- [Transport Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210823_transport.md)
+- [Application Layer]()
 
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Javascript/20210718_Operator.md)
