@@ -6,7 +6,7 @@
 
 ### 서버인증 방식
 
-> **1. 쿠키&세션 방식**
+> **1.쿠키&세션 방식**
 
 HTTP 프로토콜의 단점인 connectionless 와 stateless 를 해결하기 위한 방식입니다.
 
@@ -29,6 +29,9 @@ HTTP 프로토콜의 단점인 connectionless 와 stateless 를 해결하기 위
 클라이언트는 받은 **세션 ID를 쿠키로 저장하고 있다가 인증이 필요할 때마다 매번 서버의 세션 ID와 매칭**한다. 쿠키에 대한 요청과 응답은 패킷의 **Header에 담아 전송**한다.
 
 요새 주로 사용되는 인증 방식은 아니라고 한다.
+
+![4](https://user-images.githubusercontent.com/63203480/130488595-9360fa69-e10f-4cab-a1f8-4ee6f04d05b1.png)
+사진 출처: [https://interconnection.tistory.com/74](https://interconnection.tistory.com/74)
 
 #### 장점
 
