@@ -38,8 +38,8 @@
 - [로그인 인증방식](https://github.com/choidoorim/TIL/blob/main/WEB/20210901_Login_AuthenticationMethods.md)
 
 #### :pushpin: DataBase
-- [SQL vs NoSQL]()
-- [트랜잭션]()
+- [SQL vs NoSQL](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210902_SQLNoSQL.md)
+- [트랜잭션](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210905_Transaction.md)
 
 #### :pushpin: TDD
 - [TDD_Basic](https://github.com/choidoorim/TIL/blob/main/TDD/20210728.md)
