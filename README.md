@@ -40,7 +40,7 @@
 #### :pushpin: DataBase
 - [SQL vs NoSQL](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210902_SQLNoSQL.md)
 - [트랜잭션](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210905_Transaction.md)
-- [Key]()
+- [Key](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210907_Key.md)
 
 #### :pushpin: TDD
 - [TDD_Basic](https://github.com/choidoorim/TIL/blob/main/TDD/20210728.md)
