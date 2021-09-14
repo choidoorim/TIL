@@ -23,6 +23,19 @@
 - [Transport Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210823_transport.md)
 - [Application Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210824_application.md)
 
+#### :pushpin: WEB
+- [로그인 인증방식](https://github.com/choidoorim/TIL/blob/main/WEB/20210901_Login_AuthenticationMethods.md)
+
+#### :pushpin: DataBase
+- [SQL vs NoSQL](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210902_SQLNoSQL.md)
+- [트랜잭션](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210905_Transaction.md)
+- [Key](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210907_Key.md)
+- [SQL Injection](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210910_SQLinjection.md)
+- [SQL Index](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210910_Index.md)
+- [Redis](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210910_Redis.md)
+
+#### :pushpin: Operating System
+
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Javascript/20210718_Operator.md)
 - [Function](https://github.com/choidoorim/TIL/blob/main/Javascript/20210719_Function.md)
@@ -33,17 +46,6 @@
 - [Promise](https://github.com/choidoorim/TIL/blob/main/Javascript/20210724_Promise.md)
 - [Async and Await](https://github.com/choidoorim/TIL/blob/main/Javascript/20210724_AsyncAwait.md)
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Javascript/20210731_ETC.md)
-
-#### :pushpin: WEB
-- [로그인 인증방식](https://github.com/choidoorim/TIL/blob/main/WEB/20210901_Login_AuthenticationMethods.md)
-
-#### :pushpin: DataBase
-- [SQL vs NoSQL](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210902_SQLNoSQL.md)
-- [트랜잭션](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210905_Transaction.md)
-- [Key](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210907_Key.md)
-- [SQL Injection](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210910_SQLinjection.md)
-- [SQL Index](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210910_Index.md)
-- [Redis]()
 
 #### :pushpin: TDD
 - [TDD_Basic](https://github.com/choidoorim/TIL/blob/main/TDD/20210728.md)
