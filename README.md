@@ -34,7 +34,13 @@
 - [SQL Index](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210910_Index.md)
 - [Redis](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210910_Redis.md)
 
+#### :pushpin: Data Structure
+- [Array, ArrayList, LinkedList]()
+
 #### :pushpin: Operating System
+
+#### :pushpin: Software Engineering
+- [MSA](https://github.com/choidoorim/TIL/blob/main/SoftwareEngineering/20210915_MSA.md)
 
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210718_Operator.md)
@@ -46,9 +52,6 @@
 - [Promise](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210724_Promise.md)
 - [Async and Await](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210724_AsyncAwait.md)
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210731_ETC.md)
-
-#### :pushpin: Software Engineering
-- [MSA]()
 
 #### :pushpin: TDD
 - [TDD_Basic](https://github.com/choidoorim/TIL/blob/main/TDD/20210728.md)
