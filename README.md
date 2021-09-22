@@ -22,6 +22,7 @@
 - [Internet/Network Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210817_Network.md)
 - [Transport Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210823_transport.md)
 - [Application Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210824_application.md)
+- [Load Balancing]()
 
 #### :pushpin: WEB
 - [로그인 인증방식](https://github.com/choidoorim/TIL/blob/main/WEB/20210901_Login_AuthenticationMethods.md)
@@ -35,7 +36,7 @@
 - [Redis](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210910_Redis.md)
 
 #### :pushpin: Data Structure
-- [Array, ArrayList, LinkedList]()
+- [Array, ArrayList, LinkedList](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210921_Array.md)
 
 #### :pushpin: Operating System
 
@@ -53,9 +54,12 @@
 - [Async and Await](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210724_AsyncAwait.md)
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210731_ETC.md)
 
+#### :pushpin: Python
+- [python basic](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210916_basic.md)
+- [python string reversed](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210922_stringReversed.md)
+
 #### :pushpin: TDD
 - [TDD_Basic](https://github.com/choidoorim/TIL/blob/main/TDD/20210728.md)
 - [Create Unit Test](https://github.com/choidoorim/TIL/blob/main/TDD/20210803.md)
 - [Create Error Handling](https://github.com/choidoorim/TIL/blob/main/TDD/20210805.md)
 - [Integration Test](https://github.com/choidoorim/TIL/blob/main/TDD/20210806.md)
-
