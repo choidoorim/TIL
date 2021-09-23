@@ -37,11 +37,14 @@
 
 #### :pushpin: Data Structure
 - [Array, ArrayList, LinkedList](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210921_Array.md)
+- [Hash](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210923_Hash.md)
 
 #### :pushpin: Operating System
 
 #### :pushpin: Software Engineering
 - [MSA](https://github.com/choidoorim/TIL/blob/main/SoftwareEngineering/20210915_MSA.md)
+
+#### :pushpin: Java
 
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210718_Operator.md)
@@ -53,10 +56,12 @@
 - [Promise](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210724_Promise.md)
 - [Async and Await](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210724_AsyncAwait.md)
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210731_ETC.md)
+- [TypeScript Type 종류]()
 
 #### :pushpin: Python
 - [python basic](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210916_basic.md)
 - [python string reversed](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210922_stringReversed.md)
+- [python list 합치기](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210923_listSum.md)
 
 #### :pushpin: TDD
 - [TDD_Basic](https://github.com/choidoorim/TIL/blob/main/TDD/20210728.md)
