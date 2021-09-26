@@ -38,7 +38,7 @@
 #### :pushpin: Data Structure
 - [Array, ArrayList, LinkedList](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210921_Array.md)
 - [Hash](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210923_Hash.md)
-- [Stack and Queue]()
+- [Stack and Queue](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210924_StackQueue.md)
 
 #### :pushpin: Operating System
 
@@ -57,7 +57,8 @@
 - [Promise](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210724_Promise.md)
 - [Async and Await](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210724_AsyncAwait.md)
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210731_ETC.md)
-- [TypeScript Type 종류]()
+- [TypeScript 자료형 type 정리](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210923_typesciprt%ED%83%80%EC%9E%85%EC%A2%85%EB%A5%98.md)
+- [Module - export, import]()
 
 #### :pushpin: Python
 - [python basic](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210916_basic.md)
