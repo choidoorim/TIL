@@ -22,7 +22,7 @@
 - [Internet/Network Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210817_Network.md)
 - [Transport Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210823_transport.md)
 - [Application Layer](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210824_application.md)
-- [Load Balancing]()
+- [Load Balancing](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210922_loadBalancing.md)
 
 #### :pushpin: WEB
 - [로그인 인증방식](https://github.com/choidoorim/TIL/blob/main/WEB/20210901_Login_AuthenticationMethods.md)
@@ -39,13 +39,16 @@
 - [Array, ArrayList, LinkedList](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210921_Array.md)
 - [Hash](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210923_Hash.md)
 - [Stack and Queue](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210924_StackQueue.md)
+- [Heap]()
 
 #### :pushpin: Operating System
 
 #### :pushpin: Software Engineering
 - [MSA](https://github.com/choidoorim/TIL/blob/main/SoftwareEngineering/20210915_MSA.md)
 
-#### :pushpin: Java
+#### :pushpin: Java 의 정석
+- [1.자바를 시작하기 전에]()
+- [2.변수]()
 
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210718_Operator.md)
@@ -58,7 +61,7 @@
 - [Async and Await](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210724_AsyncAwait.md)
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210731_ETC.md)
 - [TypeScript 자료형 type 정리](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210923_typesciprt%ED%83%80%EC%9E%85%EC%A2%85%EB%A5%98.md)
-- [Module - export, import]()
+- [Module - export, import](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210926_module.md)
 
 #### :pushpin: Python
 - [python basic](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210916_basic.md)
