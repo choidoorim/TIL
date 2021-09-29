@@ -47,8 +47,8 @@
 - [MSA](https://github.com/choidoorim/TIL/blob/main/SoftwareEngineering/20210915_MSA.md)
 
 #### :pushpin: Java 의 정석
-- [1.자바를 시작하기 전에]()
-- [2.변수]()
+- [1.자바를 시작하기 전에](https://github.com/choidoorim/TIL/blob/main/Language/Java/20210927_%EC%9E%90%EB%B0%94%EC%9D%98%EC%A0%95%EC%84%9DChapter1.md)
+- [2.변수](https://github.com/choidoorim/TIL/blob/main/Language/Java/20210929_variable.md)
 
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210718_Operator.md)
