@@ -39,7 +39,7 @@
 - [Array, ArrayList, LinkedList](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210921_Array.md)
 - [Hash](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210923_Hash.md)
 - [Stack and Queue](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210924_StackQueue.md)
-- [Heap]()
+- [tree](https://github.com/choidoorim/TIL/blob/main/CS/Data%20Structure/20210929_tree.md)
 
 #### :pushpin: Operating System
 
@@ -49,6 +49,7 @@
 #### :pushpin: Java 의 정석
 - [1.자바를 시작하기 전에](https://github.com/choidoorim/TIL/blob/main/Language/Java/20210927_%EC%9E%90%EB%B0%94%EC%9D%98%EC%A0%95%EC%84%9DChapter1.md)
 - [2.변수](https://github.com/choidoorim/TIL/blob/main/Language/Java/20210929_variable.md)
+- [3.연산자]()
 
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210718_Operator.md)
