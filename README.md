@@ -25,9 +25,10 @@
 - [Load Balancing](https://github.com/choidoorim/TIL/blob/main/CS/Network/20210922_loadBalancing.md)
 - [SSL](https://github.com/choidoorim/TIL/blob/main/CS/Network/20211013_SSL.md)
 
+
 #### :pushpin: WEB
 - [로그인 인증방식](https://github.com/choidoorim/TIL/blob/main/WEB/20210901_Login_AuthenticationMethods.md)
-- [REST API]()
+- [REST API](https://github.com/choidoorim/TIL/blob/main/WEB/20211013_RESTAPI.md)
 
 #### :pushpin: DataBase
 - [SQL vs NoSQL](https://github.com/choidoorim/TIL/blob/main/CS/DataBase/20210902_SQLNoSQL.md)
@@ -47,6 +48,7 @@
 
 #### :pushpin: Software Engineering
 - [MSA](https://github.com/choidoorim/TIL/blob/main/SoftwareEngineering/20210915_MSA.md)
+
 
 #### :pushpin: Java 의 정석
 - [1.자바를 시작하기 전에](https://github.com/choidoorim/TIL/blob/main/Language/Java/20210927_%EC%9E%90%EB%B0%94%EC%9D%98%EC%A0%95%EC%84%9DChapter1.md)
