@@ -54,6 +54,9 @@
 - [1.자바를 시작하기 전에](https://github.com/choidoorim/TIL/blob/main/Language/Java/20210927_%EC%9E%90%EB%B0%94%EC%9D%98%EC%A0%95%EC%84%9DChapter1.md)
 - [2.변수](https://github.com/choidoorim/TIL/blob/main/Language/Java/20210929_variable.md)
 - [3.연산자](https://github.com/choidoorim/TIL/blob/main/Language/Java/20211003_Operator.md)
+- [4.조건문과 반복문](https://github.com/choidoorim/TIL/blob/main/Language/Java/20211017_%EC%A1%B0%EA%B1%B4%EB%AC%B8%EA%B3%BC%EB%B0%98%EB%B3%B5%EB%AC%B8.md)
+- [5.배열(Array)](https://github.com/choidoorim/TIL/blob/main/Language/Java/20211020_Array.md)
+- [6.객체지향프로그래밍1]()
 
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210718_Operator.md)
@@ -67,9 +70,10 @@
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210731_ETC.md)
 - [TypeScript 자료형 type 정리](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210923_typesciprt%ED%83%80%EC%9E%85%EC%A2%85%EB%A5%98.md)
 - [Module - export, import](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210926_module.md)
+- [NestJs API]()
 
 #### :pushpin: Python
-- [python basic](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210916_basic.md)
+- [python basic 기능](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210916_basic.md)
 - [python string reversed](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210922_stringReversed.md)
 - [python list 합치기](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210923_listSum.md)
 
