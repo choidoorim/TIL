@@ -70,7 +70,13 @@
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210731_ETC.md)
 - [TypeScript 자료형 type 정리](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210923_typesciprt%ED%83%80%EC%9E%85%EC%A2%85%EB%A5%98.md)
 - [Module - export, import](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210926_module.md)
+
+#### :pushpin: NestJS, TypeORM
 - [NestJs Circular Dependency](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211122_CircularDependency.md)
+- [NestJS - 단방향 암호화](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211112_HashingPW.md)
+- [TypeORM - Transaction](https://github.com/choidoorim/TIL/blob/main/Language/TypeORM/20211124_Transcation.md)
+- [TypeORM - Entity Inheritance](https://github.com/choidoorim/TIL/blob/main/Language/TypeORM/20211122_EntityInheritance.md)
+
 
 #### :pushpin: Python
 - [python basic 기능](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210916_basic.md)
