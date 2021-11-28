@@ -72,7 +72,7 @@
 - [Module - export, import](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210926_module.md)
 
 #### :pushpin: NestJS, TypeORM
-- [NestJS - 의존성 주입]()
+- [NestJS - 의존성 주입](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211128_%EC%9D%98%EC%A1%B4%EC%84%B1%EC%A3%BC%EC%9E%85.md)
 - [NestJs Circular Dependency](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211122_CircularDependency.md)
 - [NestJS - 단방향 암호화](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211112_HashingPW.md)
 - [TypeORM - Transaction](https://github.com/choidoorim/TIL/blob/main/Language/TypeORM/20211124_Transcation.md)
