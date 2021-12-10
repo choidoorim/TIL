@@ -70,6 +70,7 @@
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210731_ETC.md)
 - [TypeScript 자료형 type 정리](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210923_typesciprt%ED%83%80%EC%9E%85%EC%A2%85%EB%A5%98.md)
 - [Module - export, import](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210926_module.md)
+- [NodeJS Event Loop](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20211207NodeJS%EC%9D%B4%EB%B2%A4%ED%8A%B8%EB%A3%A8%ED%94%84.md)
 
 #### :pushpin: NestJS, TypeORM
 - [NestJS - 의존성 주입](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211128_%EC%9D%98%EC%A1%B4%EC%84%B1%EC%A3%BC%EC%9E%85.md)
