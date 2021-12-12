@@ -68,9 +68,12 @@
 - [Promise](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210724_Promise.md)
 - [Async and Await](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210724_AsyncAwait.md)
 - [ETC](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210731_ETC.md)
-- [TypeScript 자료형 type 정리](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210923_typesciprt%ED%83%80%EC%9E%85%EC%A2%85%EB%A5%98.md)
 - [Module - export, import](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210926_module.md)
 - [NodeJS Event Loop](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20211207NodeJS%EC%9D%B4%EB%B2%A4%ED%8A%B8%EB%A3%A8%ED%94%84.md)
+
+#### :pushpin: Typescript
+- [Typescript 자료형 type 정리](https://github.com/choidoorim/TIL/blob/main/Language/Typescript/20210923_typesciprt%ED%83%80%EC%9E%85%EC%A2%85%EB%A5%98.md)
+- [Typescript interface VS Type]()
 
 #### :pushpin: NestJS, TypeORM
 - [NestJS - 의존성 주입](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211128_%EC%9D%98%EC%A1%B4%EC%84%B1%EC%A3%BC%EC%9E%85.md)
@@ -80,7 +83,7 @@
 - [TypeORM - Transaction](https://github.com/choidoorim/TIL/blob/main/Language/TypeORM/20211124_Transcation.md)
 - [TypeORM - Entity Inheritance](https://github.com/choidoorim/TIL/blob/main/Language/TypeORM/20211122_EntityInheritance.md)
 - [TypeORM Pattern](https://github.com/choidoorim/TIL/blob/main/Language/TypeORM/TypeORMpattern.md)
-
+- [TypeORM - N + 1 문제](https://github.com/choidoorim/TIL/blob/main/Language/TypeORM/ORM-n%2B1%EB%AC%B8%EC%A0%9C.md)
 
 #### :pushpin: Python
 - [python basic 기능](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210916_basic.md)
