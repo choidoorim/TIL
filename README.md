@@ -73,7 +73,7 @@
 
 #### :pushpin: Typescript
 - [Typescript 자료형 type 정리](https://github.com/choidoorim/TIL/blob/main/Language/Typescript/20210923_typesciprt%ED%83%80%EC%9E%85%EC%A2%85%EB%A5%98.md)
-- [Typescript interface VS Type]()
+- [Typescript interface VS Type](https://github.com/choidoorim/TIL/blob/main/Language/Typescript/20211212_InterfaceType%20%EC%B0%A8%EC%9D%B4%EC%A0%90.md)
 
 #### :pushpin: NestJS, TypeORM
 - [NestJS - 의존성 주입](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211128_%EC%9D%98%EC%A1%B4%EC%84%B1%EC%A3%BC%EC%9E%85.md)
