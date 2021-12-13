@@ -56,7 +56,8 @@
 - [3.연산자](https://github.com/choidoorim/TIL/blob/main/Language/Java/20211003_Operator.md)
 - [4.조건문과 반복문](https://github.com/choidoorim/TIL/blob/main/Language/Java/20211017_%EC%A1%B0%EA%B1%B4%EB%AC%B8%EA%B3%BC%EB%B0%98%EB%B3%B5%EB%AC%B8.md)
 - [5.배열(Array)](https://github.com/choidoorim/TIL/blob/main/Language/Java/20211020_Array.md)
-- [6.객체지향프로그래밍1]()
+- [6.객체지향프로그래밍 I](https://github.com/choidoorim/TIL/blob/main/Language/Java/OOP1.md)
+- [7.객체지향프로그래밍 II](https://github.com/choidoorim/TIL/blob/main/Language/Java/OOP2.md)
 
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210718_Operator.md)
