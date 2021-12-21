@@ -26,12 +26,23 @@ Prisma 의 주요 목적은 데이터베이스 작업 시 개발자의 생산성
 prisma 를 설치하고, 로컬에서 호출합니다.
 ```
 $ npm install prisma --save-dev
+$ npm i @prisma/client
 $ npx prisma
 ```
 
-아래의 명령어를 통해 초기 설정 Prisma 디렉토리를 만듭니다.
+아래의 명령어를 통해 초기 설정 Prisma 디렉토리를 생성합니다.
 ```
 $ npx prisma init
 ```
 
+![prisma snip](https://user-images.githubusercontent.com/63203480/146920282-5b88d356-2c2e-4da0-9add-fb38dc176bb2.png)
 
+## 2. Database 설정
+
+생성된 ```.env``` 파일에서 ```DATABASE_URL``` 을 Mysql 관련 설정으로 변경해줍니다.
+
+```
+DATABASE_URL="mysql://USER:PASSWORD@HOST:PORT/DATABASE_NAME"
+```
+
+## 3. Prisma Schema 
