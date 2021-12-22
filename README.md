@@ -74,15 +74,21 @@
 - [Typescript 자료형 type 정리](https://github.com/choidoorim/TIL/blob/main/Language/Typescript/20210923_typesciprt%ED%83%80%EC%9E%85%EC%A2%85%EB%A5%98.md)
 - [Typescript interface VS Type](https://github.com/choidoorim/TIL/blob/main/Language/Typescript/20211212_InterfaceType%20%EC%B0%A8%EC%9D%B4%EC%A0%90.md)
 
-#### :pushpin: NestJS, TypeORM
+#### :pushpin: NestJS
 - [NestJS - 의존성 주입](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211128_%EC%9D%98%EC%A1%B4%EC%84%B1%EC%A3%BC%EC%9E%85.md)
 - [NestJs Circular Dependency](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211122_CircularDependency.md)
 - [NestJS - 단방향 암호화](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211112_HashingPW.md)
 - [NestJS - Numeric Query Parameter](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211130_NumericQueryParameter.md)
+
+### :pushpin: ORM
+#### :pushpin: TypeORM
 - [TypeORM - Transaction](https://github.com/choidoorim/TIL/blob/main/Language/TypeORM/20211124_Transcation.md)
 - [TypeORM - Entity Inheritance](https://github.com/choidoorim/TIL/blob/main/Language/TypeORM/20211122_EntityInheritance.md)
 - [TypeORM Pattern](https://github.com/choidoorim/TIL/blob/main/Language/TypeORM/TypeORMpattern.md)
 - [TypeORM - N + 1 문제](https://github.com/choidoorim/TIL/blob/main/Language/TypeORM/ORM-n%2B1%EB%AC%B8%EC%A0%9C.md)
+
+#### :pushpin: Prisma
+- [Prism - Mysql]()
 
 #### :pushpin: Python
 - [python basic 기능](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210916_basic.md)

@@ -46,3 +46,39 @@ DATABASE_URL="mysql://USER:PASSWORD@HOST:PORT/DATABASE_NAME"
 ```
 
 ## 3. Prisma Schema 
+```schema.prisma``` 파일은 Prisma 설정에 대한 메인 파일입니다. 크게 'Generator', 'Datasource', 'Data Model' 로 나눌 수 있습니다.
+
+- [Generators](https://www.prisma.io/docs/concepts/components/prisma-schema/generators) : Prisma Client 를 기반으로 생성되어야 하는 클라이언트를 정의
+- [Datasource](https://www.prisma.io/docs/concepts/components/prisma-schema/data-sources) : Prisma 가 연결해야 할 DB 에 대한 정보를 정의
+- [Data Model](https://www.prisma.io/docs/concepts/components/prisma-schema/data-model) :  데이터 모델(테이블)을 정의
+
+#### prisma/schema.prisma
+```
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String?
+  role    Role     @default(USER)
+  posts   Post[]
+  profile Profile?
+}
+
+model Profile {
+  id     Int    @id @default(autoincrement())
+  bio    String
+  user   User   @relation(fields: [userId], references: [id])
+  userId Int
+}
+```
+
+Relation 을 설정하는 것은 [공식문서](https://www.prisma.io/docs/concepts/components/prisma-schema/relations) 에 자세히 설명되어 있습니다.
+
