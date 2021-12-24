@@ -25,14 +25,14 @@ Prisma 의 주요 목적은 데이터베이스 작업 시 개발자의 생산성
 ## 1. Prisma 설치하기
 prisma 를 설치하고, 로컬에서 호출합니다.
 ```
-$ npm install prisma --save-dev
-$ npm i @prisma/client
-$ npx prisma
+npm install prisma --save-dev
+npm i @prisma/client
+npx prisma
 ```
 
 아래의 명령어를 통해 초기 설정 Prisma 디렉토리를 생성합니다.
 ```
-$ npx prisma init
+npx prisma init
 ```
 
 ![prisma snip](https://user-images.githubusercontent.com/63203480/146920282-5b88d356-2c2e-4da0-9add-fb38dc176bb2.png)
@@ -81,4 +81,109 @@ model Profile {
 ```
 
 Relation 을 설정하는 것은 [공식문서](https://www.prisma.io/docs/concepts/components/prisma-schema/relations) 에 자세히 설명되어 있습니다.
+
+## 4. Prisma Migrate 
+명령어를 통해 Prisma Schema 에서 정의한 설정과 모델을 바탕으로 **'Migrate'** 를 할 수 있습니다.
+
+- Migrate 란? : 추가, 변경, 삭제 등을 진행한 Model 을 데이터베이스에 전송하여 반영하는 것
+
+#### 명령어
+```
+npx prisma migrate dev --name HISTORY-NAME
+```
+HISTORY-NAME 에 Migration 시 남길 History 명을 입력해주면 됩니다.
+
+명령을 수행하면 Model 에 대한 내용이 DB 에 Migration 되고, ```prisma/migrations``` 경로에 히스토리가 남는 것을 확인할 수 있습니다.
+
+![DB-migrate-result](https://user-images.githubusercontent.com/63203480/147036928-302cde87-235b-4781-adf7-cc91c80ae6dd.png)
+
+![image](https://user-images.githubusercontent.com/63203480/147037110-446a712a-67e9-4cbc-bf00-3b1ccb6436b0.png)
+
+데이터베이스와 모델을 Migration 을 수행하기 전에 수정이 필요한 상황이 있을 수 있습니다.
+예를 들면,
+
+- 중요한 리팩토링
+- 필드의 이름을 변경
+- 관계의 방향을 수정
+- Prisma Schema 언어로 나타낼 수 없는 기능을 추가하고자 할 때 
+
+이러한 상황에는 ```--create-only``` 라는 명령어를 추가해주면 됩니다.
+```
+npx prisma migrate dev --name HISTORY-NAME
+```
+옵션을 추가하여 migration 을 진행하면, 변경 내용이 **DB 에 즉시 반영되지 않고 히스토리만 남습니다**.     
+최종적으로 수정된 Schema 로 Migration 할 때는 ```npx prisma migrate dev``` 을 실행하면 됩니다.
+
+## 5. Prisma Client 로 DataBase 조작
+Prisma 와 DB 를 연결하고, Model 을 적용시키는 것 까지는 했습니다.   
+DB 를 제어, 조작하기 위해서는 [Prisma Client](https://www.prisma.io/docs/concepts/components/prisma-client) 가 필요합니다.
+만약 Prisma Client 가 설치되어 있지 않다면 설치해줘야 합니다.
+```
+npm i @prisma/client
+```
+Prisma Client 설치가 끝났다면, 아래의 명령어를 통해 Prisma Client 를 생성해줘야 합니다.
+```
+npx prisma generate
+```
+명령어가 수행되면, Prisma 는 Model 에 대한 스키마를 읽고, Prisma Client 에 반영합니다.
+
+![prisma-generate](https://user-images.githubusercontent.com/63203480/147351509-4205d3af-b5f9-40d9-ae78-590f721222e7.png)
+
+반드시 기억해야 할 것이 있는데, Prisma Client 의 실행흐름은 위의 그림과 같습니다. 
+따라서 **Prisma Schema 가 변경된다면 generate 명령어를 통해 Prisma Client 를 업데이트** 해줘야 합니다. 
+
+## Prisma Client 를 사용하여 CRUD 수행
+[NestJS 공식문서](https://docs.nestjs.kr/recipes/prisma) 를 참고해보면, PrismaClient 를 인스턴스화 하고, 데이터베이스에 연결하는 새로운 PrismaService 를 만드는 방법을 소개합니다.
+
+#### prisma.service.ts
+```typescript
+import { INestApplication, Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
+import { PrismaClient } from '@prisma/client';
+
+@Injectable()
+export class PrismaService extends PrismaClient
+  implements OnModuleInit {
+  async onModuleInit() {
+    await this.$connect();
+  }
+
+  async enableShutdownHooks(app: INestApplication) {
+    this.$on('beforeExit', async () => {
+      await app.close();
+    });
+  }
+}
+```
+
+저는 prisma.service.ts 를 기능 별 데이터베이스 쿼리를 수행하도록 하였습니다.
+
+### Read Data
+```findUnique()``` 메서드를 사용하여 id 가 userIdx 인 데이터를 찾을 수 있습니다.
+
+#### prisma.service.ts
+```typescript
+//...
+export class PrismaService extends PrismaClient
+    //...
+    async findUserById(userIdx: number) {
+        return await this.user.findUnique({
+            where: {
+                id: userIdx,
+            }
+        })
+    }
+}
+```
+
+#### user.service.ts
+```typescript
+@Injectable()
+export class UserService {
+    constructor(private prisma: PrismaService) {}
+
+    async findUserById(userIdx: number) {
+        return this.prisma.findUserById(userIdx);
+    }
+}
+```
 
