@@ -88,7 +88,8 @@
 - [TypeORM - N + 1 문제](https://github.com/choidoorim/TIL/blob/main/Language/TypeORM/ORM-n%2B1%EB%AC%B8%EC%A0%9C.md)
 
 #### :pushpin: Prisma
-- [Prism - Mysql](https://github.com/choidoorim/TIL/blob/main/Language/Prisma/20211216_PrismaMysqlCRUD.md)
+- [Prisma - CRUD](https://github.com/choidoorim/TIL/blob/main/Language/Prisma/20211216_PrismaMysqlCRUD.md)
+- [Prisma - Relation]()
 
 #### :pushpin: Python
 - [python basic 기능](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210916_basic.md)
