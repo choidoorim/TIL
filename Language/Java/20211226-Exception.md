@@ -131,3 +131,17 @@ void method() throws Exception1, Exception2, Exception3, ... ExceptionN {
 
 예외가 발생한 메서드에서 예외처리를 하지 않고 자신을 호출한 메서드에게 예외를 넘겨줄 수는 있지만, **try-catch 문을 통해 처리하지 않는다면 비정상적인 종료가 발생**합니다.
 
+## 7. finally 블럭
+finally 블럭은 **예외의 발생여부에 상관없이 실행되어야할 코드를 포함시킬 목적으로 사용**됩니다.
+try-catch 문의 끝에 **선택적**으로 덧붙여 사용할 수 있으며, try-catch-finally 의 순서로 구성됩니다.
+
+```java
+try{
+    // ...
+} catch (Exception e) {
+    // ...
+} finally {
+    // 예외의 발생여부에 관계없이 항상 수행되어야하는 문장
+}
+```
+
