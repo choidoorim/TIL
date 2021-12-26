@@ -134,6 +134,7 @@ npx prisma generate
 
 ## Prisma Client 를 사용하여 CRUD 수행
 [NestJS 공식문서](https://docs.nestjs.kr/recipes/prisma) 를 참고해보면, PrismaClient 를 인스턴스화 하고, 데이터베이스에 연결하는 새로운 PrismaService 를 만드는 방법을 소개합니다.
+[Prisma CRUD 공식문서](https://www.prisma.io/docs/concepts/components/prisma-client/crud) 를 보면 더 자세한 CRUD 방법을 소개하고 있습니다.
 
 #### prisma.service.ts
 ```typescript
@@ -187,3 +188,114 @@ export class UserService {
 }
 ```
 
+### Create Data
+```create()```, ```createMany()``` 메서드를 사용해서 데이터를 생성할 수 있습니다.
+
+#### prisma.service.ts
+```typescript
+//...
+export class PrismaService extends PrismaClient
+    //...
+    async createUser(createUserReq: Prisma.UserCreateInput): Promise<User|null> {
+        return await this.user.create({
+            data: {
+                email: createUserReq.email,
+                name: createUserReq.name
+            }
+        })
+    }
+}
+```
+```
+// result
+{
+    "id": 3,
+    "email": "qwe@qwe.com",
+    "name": "qwe123123"
+}
+```
+
+```createMany()``` 메서드를 사용하면 여러 개의 데이터를 한 번에 생성할 수 있습니다.
+```typescript
+//...
+async createUser(){
+    return await this.user.createMany({
+        data: [
+            { email: 'qwe@qwe.com', name: 'qwe' },
+            { email: 'asd@asd.com', name: 'asd' },
+            { email: 'ttt@ttt.com', name: 'ttt' },
+        ]
+    })
+}
+```
+
+```
+// result
+{
+  count: 3
+}
+```
+
+####  user.service.ts
+```typescript
+//...
+async createUser() {
+    return await this.prisma.createUser();
+}
+```
+
+### Update Data
+```update()```, ```updateMany()``` 메서드를 사용하여 데이터를 업데이트 할 수 있습니다.     
+```updateMany()``` 도 ```createMany()``` 와 동일하게 return 값이 Count 로만 이뤄져 있습니다.
+
+#### prisma.service.ts
+```typescript
+//...
+export class PrismaService extends PrismaClient
+    //...
+    async updateUser(): Promise<User> {
+        return await this.user.update({
+            where: {
+                id: 1,
+            },
+            data: {
+                email: 'qwe@qwe.com'
+                name: 'qweqwe123',
+            },
+        });
+    }
+}
+```
+
+####  user.service.ts
+```typescript
+//...
+async updateUser() {
+    return await this.prisma.updateUser();
+}
+```
+
+### DELETE Data
+```delete()```, ```deleteMany()``` 메서드를 사용하여 데이터를 삭제할 수 있습니다.    
+deleteMany 도 CreateMany 와 동일하게 return 값이 Count 로만 이뤄져 있습니다.
+
+
+#### prisma.service.ts
+```typescript
+//...
+async deleteUser(userIdx: number): Promise<User> {
+    return await this.user.delete({
+        where: {
+            id: userIdx
+        }
+    });
+}
+```
+
+#### user.service.ts
+```typescript
+//...
+async deleteUser(userIdx) {
+    return await this.prisma.deleteUser(userIdx);
+}
+```
