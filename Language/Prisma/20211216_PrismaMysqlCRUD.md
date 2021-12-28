@@ -109,7 +109,7 @@ HISTORY-NAME 에 Migration 시 남길 History 명을 입력해주면 됩니다.
 
 이러한 상황에는 ```--create-only``` 라는 명령어를 추가해주면 됩니다.
 ```
-npx prisma migrate dev --name HISTORY-NAME
+npx prisma migrate dev --create-only
 ```
 옵션을 추가하여 migration 을 진행하면, 변경 내용이 **DB 에 즉시 반영되지 않고 히스토리만 남습니다**.     
 최종적으로 수정된 Schema 로 Migration 할 때는 ```npx prisma migrate dev``` 을 실행하면 됩니다.
