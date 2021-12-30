@@ -57,6 +57,7 @@
 - [6.객체지향프로그래밍 I](https://github.com/choidoorim/TIL/blob/main/Language/Java/20211021_OOP1.md)
 - [7.객체지향프로그래밍 II](https://github.com/choidoorim/TIL/blob/main/Language/Java/20211213_OOP2.md)
 - [8. 예외처리 exception handling](https://github.com/choidoorim/TIL/blob/main/Language/Java/20211226-Exception.md)
+- [9.java.lang패키지와 유용한 클래스](https://github.com/choidoorim/TIL/blob/main/Language/Java/20211230_javalang.md)
 
 #### :pushpin: Javascript Study
 - [Data Type, Operator, for loop](https://github.com/choidoorim/TIL/blob/main/Language/Javascript/20210718_Operator.md)
@@ -90,7 +91,7 @@
 
 #### :pushpin: Prisma
 - [Prisma - CRUD](https://github.com/choidoorim/TIL/blob/main/Language/Prisma/20211216_CRUD.md)
-- [Prisma - Relation]()
+- [Prisma - Relation](https://github.com/choidoorim/TIL/blob/main/Language/Prisma/20211227_Relation.md)
 
 #### :pushpin: Python
 - [python basic 기능](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210916_basic.md)
