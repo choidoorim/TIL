@@ -49,6 +49,8 @@ export class QueryStringArrayTestDto {
 }
 ```
 
+```a,b,c...``` 로 들어오는 Query Data 를 ```[a, b, c]``` 로 변환하고, 개별적으로 검증을 진행합니다. 
+
 #### controller
 ```typescript
 @Get()

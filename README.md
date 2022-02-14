@@ -1,8 +1,13 @@
 # :books: Today I Learned
 
 ### :warning: Rule
-- 공부한 내용들을 정리하여 블로그에 올리기 :memo:
-  - [Blog](https://choidr.tistory.com/)
+- **commit message**
+  ```
+  add : 파일추가
+  update : 파일내용 변경
+  delete : 파일 삭제
+  ```
+- :memo: [Blog](https://choidr.tistory.com/)
 
 ### :open_file_folder: Category
 #### :pushpin: Algorithm
@@ -84,6 +89,7 @@
 - [NestJs Circular Dependency](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211122_CircularDependency.md)
 - [NestJS - 단방향 암호화](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211112_HashingPW.md)
 - [NestJS - Numeric Query Parameter](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211130_NumericQueryParameter.md)
+- [NestJS - Query String Array](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/queryStringArray.md)
 
 ### :pushpin: ORM
 #### :pushpin: TypeORM
