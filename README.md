@@ -102,7 +102,7 @@
 #### :pushpin: Prisma
 - [CRUD](https://github.com/choidoorim/TIL/blob/main/Language/Prisma/20211216_CRUD.md)
 - [Relation](https://github.com/choidoorim/TIL/blob/main/Language/Prisma/20211227_Relation.md)
-- [Reused Raw Query]()
+- [Reused Raw Query](https://github.com/choidoorim/TIL/blob/main/Language/Prisma/reused-raw-query.md)
 
 #### :pushpin: Python
 - [python basic 기능](https://github.com/choidoorim/TIL/blob/main/Language/Python/20210916_basic.md)
