@@ -44,6 +44,92 @@ class Persistence {
 
 
 ## Open-Closed Principle(OCP) - 개방-폐쇠 원칙
+### "소프트웨어 엔티티는 확장을 위해서는 열려 있어야 하지만, 수정을 위해는 닫혀 있어야 한다"
+클래스를 오버라이딩 하기보다는 확장하는 것이 더 좋습니다. 인터페이스나 클래스를 구현해서 이전 코드를 건드리지 않고 새로운 기능으로 쉽게 확장할 수 있어야 합니다.
+
+아래의 3 개의 Class 중 AreaCalculator 라는 클래스를 사용하여 Rectangle 및 Circle 클래스의 면적을 계산합니다. 아래의 예제는 잘못된 방법입니다.
+
+```typescript
+class Rectangle {
+    public width: number;
+    public height: number;
+
+    constructor(width: number, height: number) {
+        this.width = width;
+        this.height = height;
+    }
+}
+
+class Circle {
+    public radius: number;
+
+    constructor(radius: number) {
+        this.radius = radius;
+    }
+}
+
+class AreaCalculator {
+    public calculateRectangleArea(rectangle: Rectangle): number {
+        return rectangle.width * rectangle.height;
+    }
+
+    public calculateCircleArea(circle: Circle): number {
+        return Math.PI * (circle.radius * circle.radius);
+    }
+}
+```
+
+개방폐쇠 원칙을 따르기 위해서 Shape 이라는 interface 를 추가해주면 됩니다. 
+따라서 모든 Shape 관련 클래스들은 Shape 인터페이스를 구현해서 이 인터페이스에 의존할 수 있습니다.
+
+```typescript
+interface Shape {
+    calculateArea(): number;
+}
+
+class Rectangle implements Shape {
+    public width: number;
+    public height: number;
+
+    constructor(width: number, height: number) {
+        this.width = width;
+        this.height = height;
+    }
+
+    public calculateArea(): number {
+        return this.width * this.height;
+    }
+}
+
+class Circle implements Shape {
+    public radius: number;
+
+    constructor(radius: number) {
+        this.radius = radius;
+    }
+
+    public calculateArea(): number {
+        return Math.PI * (this.radius * this.radius);
+    }
+}
+
+class AreaCalculator {
+    public calculateArea(shape: Shape): number {
+        return shape.calculateArea();
+    }
+}
+
+// TEST
+// const rectangle = new Rectangle(3, 2);
+// const circle = new Circle(12);
+// const areaCalculator = new AreaCalculator();
+// const test1 = areaCalculator.calculateArea(rectangle);
+// const test2 = areaCalculator.calculateArea(circle);
+```
+
+이런 식으로 AreaCalculator 클래스를 인수를 갖는 하나의 함수로 단순화할 수 있고,
+이 인수는 Shape 인터페이스를 기반으로 합니다.
+
 ## Liskov Substitution Principle(LSP) - 리스코프 치환 원칙
 ## Interface Segregation Principle(ISP) - 인터페이스 분리 원칙
 ## Dependency Inversion Principle(DIP) - 의존관계 역전 원칙
