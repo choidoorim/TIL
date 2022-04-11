@@ -189,9 +189,147 @@ class Rectangle {
 ```
 
 ## 4. Interface Segregation Principle(ISP) - 인터페이스 분리 원칙
-### "특정 클라이언트를 위한 인터페이스 여러 개가 범용 인터페이스 하나보다 낫다"
+### "여러 개의 클라이언트별 인터페이스가 하나의 범용 인터페이스 보다 낫다"
+즉, 인터페이스가 적은 것 보다는 많은 것이 좋다는 것입니다. 
 
+```Character``` 라는 인터페이스를 구현하는 ```troll``` 이라는 클래스가 있습니다.    
+하지만 트롤(troll) 은 수영과 말을 못합니다. 따라서 아래의 ```Character``` 인터페이스는 트롤(troll) 클래스에 적합하지는 않습니다.  
+
+```typescript
+interface Character {
+  shoot(): void;
+  swim(): void;
+  talk(): void;
+  dance(): void;
+}
+
+class Troll implements Character {
+  public shoot(): void {
+    // ...
+  }
+  
+  public swim(): void {
+    // a troll can't swim
+  }
+
+  public talk(): void {
+    // a troll can't talk
+  }
+
+  public dance(): void {
+    // ...
+  }
+}
+```
+
+**인터페이스 분리 원칙**에 따른다면 어떻게 바꿀 수 있을까요?
+```Character``` 인터페이스를 제거하고 기능별 4개의 인터페이스로 분할하고 트롤(troll) 이 필요로 하는 인터페이스만 Troll 클래스를 의존하도록 변경합니다.
+
+```typescript
+interface Talker {
+  talk(): void;
+}
+
+interface Shooter {
+  shoot(): void;
+}
+
+interface Swimmer {
+  swim(): void;
+}
+
+interface Dancer {
+  dance(): void;
+}
+
+class Troll implements Shooter, Dancer {
+  public shoot(): void {
+    // ...
+  }
+
+  public dance(): void {
+    // ...
+  }
+}
+```
 
 ## 5. Dependency Inversion Principle(DIP) - 의존관계 역전 원칙
+### "추상화에 의존해야지 구체화에 의존하면 안된다"
+아래 코드는 나쁜 예제입니다. FrontendDeveloper 및 BackendDeveloper 클래스를 초기화하는 Software 클래스가 있습니다.
+SoftwareProject 클래스는 FrontendDeveloper 와 BackendDeveloper 2 개의 클래스에 의존적입니다.
+하지만 FrontendDeveloper 와 BackendDeveloper 는 비슷한 기능을 가져 비슷한 일을 하기 때문에 아래의 예제는 잘못된 방법입니다.    
+의존관계 역전 원칙(DIP)의 목표를 달성하기 위한 요구 사항을 충족하는 더 좋은 방법이 있습니다.
 
+```typescript
+class FrontendDeveloper {
+  public writeHtmlCode(): void {
+    // ...
+  }
+}
+
+class BackendDeveloper {
+  public writeTypeScriptCode(): void {
+    // ...
+  }
+}
+
+class SoftwareProject {
+  public frontendDeveloper: FrontendDeveloper;
+  public backendDeveloper: BackendDeveloper;
+
+  constructor() {
+    this.frontendDeveloper = new FrontendDeveloper();
+    this.backendDeveloper = new BackendDeveloper();
+  }
+
+  public createProject(): void {
+    this.frontendDeveloper.writeHtmlCode();
+    this.backendDeveloper.writeTypeScriptCode();
+  }
+}
+```
+
+우선 FrontendDeveloper 와 BackendDeveloper 는 유사한 클래스이므로 Developer 라는 인터페이스에 의존하게 합니다.    
+SoftwareProject 클래스 내에서 FrontendDeveloper, BackendDeveloper 클래스를 초기화하는 것 대신에, 각 ```develop()``` 메서드를 호출하기 위해 반복하는 리스트(배열)로 사용합니다.    
+즉, front, backend Developer 가 아니더라도 infra Developer 가 추가되는 등 클래스가 유연해집니다.
+
+```typescript
+interface Developer {
+  develop(): void;
+}
+
+class FrontendDeveloper implements Developer {
+  public develop(): void {
+    this.writeHtmlCode();
+  }
+
+  private writeHtmlCode(): void {
+    // ...
+  }
+}
+
+class BackendDeveloper implements Developer {
+  public develop(): void {
+    this.writeTypeScriptCode();
+  }
+
+  private writeTypeScriptCode(): void {
+    // ...
+  }
+}
+
+class SoftwareProject {
+  public developers: Developer[];
+
+  public createProject(): void {
+    this.developers.forEach((developer: Developer) => {
+      developer.develop();
+    });
+  }
+}
+```
+
+아직은 많이 부족하지만 위의 원칙을 계속 생각해나가면서 개발을 한다면 좋은 구조와 기능들을 지닌 코드들을 작성할 수 있을 것 같습니다!
+
+### 출처
 https://blog.bitsrc.io/solid-principles-in-typescript-153e6923ffdb
