@@ -5,7 +5,7 @@ SOLID 디자인 원칙은 더 나은, 더 깔끔한 코드를 작성하는 방�
 
 SOLID 원칙을 Typescript 를 통해 알아볼려고 합니다.
 
-## Single Responsibility Principle(SRP) - 단일 책임 원칙
+## 1. Single Responsibility Principle(SRP) - 단일 책임 원칙
 ### "어떤 클래스를 변경해야하는 이유는 단 하나뿐이여야 한다"
 클래스는 하나의 목적과 책임을 가지고 있어야하기에, 변경하기 위한 이유도 하나이어야 한다. 
 이 원칙을 따르게 된다면 코드를 더 잘 유지 관리하고, 잠재적인 부작용을 최소화할 수 있습니다.
@@ -43,7 +43,7 @@ class Persistence {
 ```
 
 
-## Open-Closed Principle(OCP) - 개방-폐쇠 원칙
+## 2. Open-Closed Principle(OCP) - 개방-폐쇠 원칙
 ### "소프트웨어 엔티티는 확장을 위해서는 열려 있어야 하지만, 수정을 위해는 닫혀 있어야 한다"
 클래스를 오버라이딩 하기보다는 확장하는 것이 더 좋습니다. 인터페이스나 클래스를 구현해서 이전 코드를 건드리지 않고 새로운 기능으로 쉽게 확장할 수 있어야 합니다.
 
@@ -130,8 +130,68 @@ class AreaCalculator {
 이런 식으로 AreaCalculator 클래스를 인수를 갖는 하나의 함수로 단순화할 수 있고,
 이 인수는 Shape 인터페이스를 기반으로 합니다.
 
-## Liskov Substitution Principle(LSP) - 리스코프 치환 원칙
-## Interface Segregation Principle(ISP) - 인터페이스 분리 원칙
-## Dependency Inversion Principle(DIP) - 의존관계 역전 원칙
+## 3. Liskov Substitution Principle(LSP) - 리스코프 치환 원칙
+### "부모 클래스에서 파생된 자식 클래스의 기능을 사용할 수 있어야 한다."
+즉, 부모 클래스의 인스턴스 대신에 자식 클래스의 인스턴스로 대체해도 프로그램의 의미는 변화되지 않습니다. 부모 클래스와 자식 클래스의 행위는 일관되야 합니다.
+
+아래 나쁜 예제가 있습니다. 정사각형(Square) 클래스는 직사각형(Rectangle) 클래스를 확장합니다.    
+하지만 이 확장은 너비와 높이 속성을 덮어써서 로직이 변경되었기 때문에 의미가 없습니다.
+
+```typescript
+class Rectangle {
+  public width: number;
+  public height: number;
+
+  constructor(width: number, height: number) {
+    this.width = width;
+    this.height = height;
+  }
+
+  public calculateArea(): number {
+    return this.width * this.height;
+  }
+}
+
+class Square extends Rectangle {
+  public _width: number;
+  public _height: number;
+
+  constructor(width: number, height: number) {
+    super(width, height);
+
+    this._width = width;
+    this._height = height;
+  }
+}
+```
+
+그래서 덮어쓰는 것이 아닌, 정사각형(Square) 클래스를 제거하고 목적을 변경하지 않고 정사각형이라는 논리를 추가해줍니다. 
+
+```typescript
+
+class Rectangle {
+  public width: number;
+  public height: number;
+
+  constructor(width: number, height: number) {
+    this.width = width;
+    this.height = height;
+  }
+
+  public calculateArea(): number {
+    return this.width * this.height;
+  }
+
+  public isSquare(): boolean {
+    return this.width === this.height;
+  }
+}
+```
+
+## 4. Interface Segregation Principle(ISP) - 인터페이스 분리 원칙
+### "특정 클라이언트를 위한 인터페이스 여러 개가 범용 인터페이스 하나보다 낫다"
+
+
+## 5. Dependency Inversion Principle(DIP) - 의존관계 역전 원칙
 
 https://blog.bitsrc.io/solid-principles-in-typescript-153e6923ffdb
