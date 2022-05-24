@@ -86,3 +86,52 @@ Virtual Machines 을 사용한다는 것은 호스트 운영체제인 Windows, m
 2. 공유, 재구축 및 배포 모두 수행할 순 있지만 Docker Container 보다 까다로울 것이다.
 3. 환경을 캡슐화 하지만 어플리케이션을 실행하는데 필요한 것들만 캡슐화하는 것이 아니라 컴퓨터 전체를 캡슐화 한다.
 
+# Docker Setup
+### Mac, Windows
+Docker Desktop 을 설치해야 한다(**권장**). 만약 Docker Desktop 을 설치할 환경이 아니라면 Docker Toolbox 를 이용해야 한다.   
+Docker Desktop 과 Docker Toolbox 은 단순히 도커를 간편하게 활용할 수 있는 도구일 뿐이다.
+
+### Linux
+Linux 일 경우에는 도커가 사용하는 기술과 컨테이너를 기본적으로 지원한다.
+
+# Docker 실전 참여하기
+Docker 의 컨테이너는 항상 이미지를 기반으로 하기 때문에 먼저 이미지라는 것을 생성해야 한다.   
+이미지를 생성하기 위해 확장자 없는 ```Dockerfile``` 을 만들어줘야 한다.
+그리고 Dockerfile 에서 최종적으로 **컨테이너를 설정하는 방법을 설명**한다.
+
+### NestJS Base Dockerfile
+```dockerfile
+FROM node:16-alpine
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+# 해당 이미지는 3000 포트에 공개될 예정이라는 것을 명시
+EXPOSE 3000
+
+# ["npm","run","start:prod"] === npm run start:prod
+CMD ["npm","run","start:prod"]
+```
+위와 같이 Dockerfile 을 만든 뒤 ```docker build .``` 명령어를 입력하면 이미지가 만들어진다.
+
+<img width="657" alt="스크린샷 2022-05-24 오후 9 31 14" src="https://user-images.githubusercontent.com/63203480/170035751-172029c7-99e8-4718-80c5-06b37c606424.png">
+
+그다음에 ```docker run -p 3000:3000 이미지파일``` 명령어를 통해 빌드한 이미지를 기반으로 컨테이너를 실행할 수 있다.
+```-p``` 옵션을 통해 호스트 운영체제와 컨테이너 환경의 포트를 매핑시킨다. 왜냐하면 컨테이너와 호스트 운영 체제 사이에는 기본적인(Default) 연결이 없기 때문이다.    
+예를 들어 컨테이너에서 실행 중인 어플리케이션에 HTTP 요청을 보내려면 통신하려는 컨테이너의 포트를 열어야 합니다. 그렇지 않다면 컨테이너에 잠긴 네트워크이므로 외부에서 연결할 수 없게 된다.
+
+그리고 현재 실행중인 컨테이너를 확인하고 싶다면 ```docker ps``` 명령어를 통해 알 수 있다.
+
+<img width="903" alt="스크린샷 2022-05-24 오후 9 49 57" src="https://user-images.githubusercontent.com/63203480/170038661-730a6c57-2f85-4140-bc88-df720655adb0.png">
+
+또한 실행중인 도커 컨테이너를 중지하고 싶다면 ```docker stop NAMES``` 명령어를 통해 가능하다. ```NAMES``` 는 ```docker ps``` 명령어 실행시 나오는 것이다.
+
+위의 예제를 통해 컨테이너화된 어플리케이션을 생성했다. 모든 패키지 관련 종속성을 설치하기 위해서 프로젝트 디렉토리 안에서 ```npm install``` 을 실행하지 않아도 웹 서버를 실행시킬 수 있다.    
+이 모든 것이 도커 덕분에 가능한 것이다.
