@@ -40,4 +40,3 @@ https://docs.github.com/en/communities/using-templates-to-encourage-useful-issue
 
 ### 참고자료
 https://blog.carbonfive.com/why-write-good-pull-requests/  
-
