@@ -91,6 +91,7 @@
 - [NestJS - 단방향 암호화](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211112_HashingPW.md)
 - [NestJS - Numeric Query Parameter](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/20211130_NumericQueryParameter.md)
 - [NestJS - Query String Array](https://github.com/choidoorim/TIL/blob/main/Language/NestJs/queryStringArray.md)
+- [NestJS - Interface Injection](https://github.com/choidoorim/TIL/blob/main/Framework/NestJs/interface-injection.md)
 
 ### :pushpin: ORM
 #### :pushpin: TypeORM
