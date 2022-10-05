@@ -1,4 +1,4 @@
-# 3 장
+# 3장
 
 ### 작게 만들어라
 
@@ -116,11 +116,11 @@ Circle makeCircle(Pointer center, double radius);
 
 ```java
 public boolean checkPassword(String name, String password) {
-    // Check Logic
-	if ("Valid Password".equals(hasedPassword)) {
-		Session.initialize();
-		//...
-	}
+		// Check Logic
+		if ("Valid Password".equals(hasedPassword)) {
+				Session.initialize();
+				//...
+		}
 } 
 ```
 
@@ -134,3 +134,77 @@ public boolean checkPassword(String name, String password) {
 일반적으로 출력 인수는 피해야 한다. 함수에서 상태를 변경해야 한다면 함수가 속한 객체 상태를 변경하는 방식을 택한다.
 
 ### 명령과 조회를 분리하라!
+
+함수는 뭔가를 수행하거나 답하거나 둘 중에 하나만 해야 한다. 객체 상태를 변경하거나 아니면 객체 정보를 반환하거나 둘 중 하나다.
+
+```java
+public boolean set(String attribute, String value);
+
+if(set("userName", "unclebob")) ...
+```
+
+위의 코드는 userName 이 unclebob 으로 설정하는지, 확인하는 코드인지 의미가 모호하다.
+
+setAndCheckIfExists 라고 바꾸는 방법도 있지만 명령과 조회를 분리하는 것이 더 좋다.
+
+```java
+if(attribute("userName")) {
+	setAttribute("userName", "unclebob");
+	...
+}
+```
+
+### 오류 코드보다 예외를 사용하라!
+
+오류 코드 대신 예외를 사용하면 오류 처리가 원래 코드에서 분리되므로 코드가 깔끔해진다.
+
+```java
+if (deletePage(page) == E_OK) {
+	if (registry.deleteReference(page.name) == E_OK) {
+		if (configKeys.deleteKey(page.name.makeKey) == E_OK) {
+				//...
+		} else {
+				//...
+		}
+	} else {
+			//...
+	}
+} else {
+	return E_ERROR;
+}
+
+// exception
+try {
+	deletePage(page);
+	registry.deleteReference(page.name)
+	configKeys.deleteKey(page.name.makeKey());
+} catch (e) {
+	logger.log(e.getMessage());
+}
+```
+
+> Try/Catch 블록 뽑아내기
+>
+
+try-catch 블록은 코드 구조에 혼란을 일으키며, 정상 동작과 오류 처리 동작을 뒤섞기 때문에 별도의 함수로 뽑아내는 편이 좋다.
+
+```java
+private void deletePageAndAllReferences(Page page) throw Exception {
+	deletePage(page);
+	registry.deleteReference(page.name)
+	configKeys.deleteKey(page.name.makeKey());
+}
+
+public void delete(Page page) {
+	try {
+		deletePageAndAllReferences(page);
+	} catch (Exception e) {
+		logError(e);
+	}
+}
+```
+
+위의 `delete` 함수는 모든 오류를 처리하기 때문에 코드를 이해하기 쉬워진다. 실제로 기능을 수행하는 것은 `deletePageAndAllReferences` 함수이다. 이렇게 정상 동장과 오류 처리 동작을 분리하면 코드를 이해하고 수정하기 쉬워진다.
+
+> 오류 처리도 한 가지 작업이다
+>
