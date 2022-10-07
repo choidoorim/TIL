@@ -35,6 +35,7 @@ void findApplicationBean() {
 bean 을 조회해서 확인해보면 다양한 `BeanDefinition` 정보가 있는 것을 확인할 수 있다.
 
 <img width="928" alt="스크린샷 2022-09-22 오후 11 24 34" src="https://user-images.githubusercontent.com/63203480/191773509-803a0b84-a21f-4a32-8f67-ddcfc83f9e7a.png">
+
 - BeanClassName: 생성할 빈의 클래스 명(자바 설정 처럼 팩토리 역할의 빈을 사용하면 없음) 
 - factoryBeanName: 팩토리 역할의 빈을 사용할 경우 이름, 예) appConfig
 - factoryMethodName: 빈을 생성할 팩토리 메서드 지정, 예) memberService  
