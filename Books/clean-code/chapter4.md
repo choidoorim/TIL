@@ -50,3 +50,83 @@ protected abstract Responder responderBeingTested();
 
 > 의도를 설명하는 주석
 >
+
+때로는 주석은 구현을 이해하게 도와주는 선을 넘어 결정에 깔린 의도까지 설명한다.
+
+```java
+// 스레드를 대량 생성하는 방법으로 어떻게든 경쟁 조건을 만들려 시도한다
+for (int i = 0; i < 25000; i++) {
+	WidgetBuilderThread widgetBuilderThread = 
+		new WidgetBuilderThread(widgetBuilder, text, parent, failFlag);
+	Thread thread = new Thread(widgetBuilderThread);
+	thread.start();
+}
+```
+
+> 의미를 명료하게 밝히는 주석
+>
+
+인수나 반환 값이 표준 라이브러리나 변경하지 못하는 코드에 속한다면 의미를 명료하게 밝히는 주석이 유용하다.
+
+```java
+assertTrue(a.compateTo(a) == 0);  // a == a
+assertTrue(a.compateTo(b) != 0);  // a != b
+assertTrue(a.compateTo(ab) == 0);  // a == b
+assertTrue(a.compateTo(b) == -1);  // a < b
+```
+
+위와 같은 주석을 달 때는 더 나은 방법이 없는지 고민하고 정확히 달아야 한다.
+
+> 결과를 경고하는 주석
+>
+
+다른 프로그래머에서 결과를 경고할 목적으로 주석을 사용한다.
+
+```java
+// 여유 시간이 충분하지 않다면 실행하지 마십시오
+public void _testWithReallyBigFile() {
+	//...
+}
+```
+
+> TODO 주석
+>
+
+앞으로 할 일을 `//TODO` 주석으로 남겨두면 편하다.
+
+```java
+// TODO-MdM 현재 필요하지 않다.
+// 체크아웃 모델을 도입하면 함수가 필요 없다.
+protected VersionInfo makeVersion() throws Exception {
+	return null;
+}
+```
+
+TODO 주석을 통해 필요하지만 당장 구현하기 어려운 업무를 기술한다.
+
+> 중요성을 강조하는 주석
+>
+
+중요하지 않다고 생각할 수 있는 뭔가의 중요성을 강조하기 위해서도 주석을 사용한다.
+
+```java
+String listItemContent = match.group(3).trim();
+// 여기서 trim 은 정말 중요하다. trim 함수는 문자열에서 시작 공백을 제거한다.
+```
+
+> 공개 API 에서 Javadocs
+>
+
+설명이 잘 된 Open API 는 참으로 유용하고 만족스럽다.
+
+### 나쁜 주석
+
+대다수가 나쁜 주석에 속한다. 일반적으로 대다수 주석은 허출한 코드를 지탱하거나, 엉성한 코드를 변명하거나, 미숙한 결정을 합리화하는 등 프로그래머가 주절거리는 독백에서 크게 벗어나지 못한다.
+
+> 주절거리는 주석
+>
+
+답을 알기 위해 **다른 코드들을 뒤져봐야 하는 주석**은 독자와 제대로 소통하지 못하는 주석이다. 그런 주석은 바이트만 낭비할 뿐이다.
+
+> 같은 이야기를 중복하는 주석
+>
