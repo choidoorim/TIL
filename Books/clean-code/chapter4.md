@@ -130,3 +130,48 @@ String listItemContent = match.group(3).trim();
 
 > 같은 이야기를 중복하는 주석
 >
+
+주석이 코드의 내용을 그래도 중복하게 된다면 코드보다 주석을 읽는 시간이 더 오래 걸릴 수가 있다.
+
+```java
+// this.closed 가 true 일 때 반환되는 유틸리티 메서드이다.
+// 타임아웃에 도달하면 예외를 던진다.
+public synchronized void waitForClose(final long timeoutMillis) throw Exception {
+	if (!closed) {
+		wait(timeoutMillis);
+		if (!closed) {
+			throw new Exception("exception");
+		}
+	}
+}
+```
+
+위 코드는 주석이 제공하는 내용이 실제로 코드보다 부정확해 독자가 함수를 대충 이해하고 넘어가게 만든다. 엔진 후드를 열어볼 필요가 없다고 고객한테 회유하는 중고차 판매원과 비슷한 것이다.
+
+> 오해할 여지가 있는 주석
+>
+
+주석에 담긴 살짝 잘못된 정보로 인해 프로그래머가 경솔하게 함수를 호출할지도 모르는 상황이 발생한다.
+
+그렇게 되면 프로그래머는 어떻게 돌아가는지에 대한 이유를 찾느라 힘든 상황이 생길지도 모른다.
+
+> 의무적으로 다는 주석
+>
+
+```java
+/**
+*
+* @param title CD 제목
+* @param author CD 저자
+*/
+public void addCD(String title, String author) {
+	CD cd = new CD();
+	cd.title = title;
+	cd.author = author;
+}
+```
+
+위의 예제와 같이 아무 가치 없는 주석은 코드만 헷갈리게 만들며, 거짓말할 가능성을 높이며, 잘못된 정보를 제공할 여지만 만든다.
+
+> 이력을 기록하는 주석
+>
