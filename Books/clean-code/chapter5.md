@@ -79,15 +79,220 @@ public class ReporterConfig {
 
 ## 종속함수
 
-하나의 함수가 다른 함수를 호출한다면 두 함수는 세로로 가까이 배치한다. 또한 가능하다면 **호출하는 함수를 호출되는 함수보다 먼저 배치**한다. 그러면 프로그램이 자연스럽게 읽기 쉬워진다.
+**하나의 함수가 다른 함수를 호출한다면 두 함수는 세로로 가까이 배치**한다. 또한 가능하다면 **호출하는 함수를 호출되는 함수보다 먼저 배치**한다. 그러면 프로그램이 자연스럽게 읽기 쉬워진다.
 
 ```java
+// 호출하는 함수
 public Response makeResponse() {
 	String pageName = getPageNameOrDefault(request, "FrontPage");
 }
 
+// 호출되는 함수
 private String getPageNameOrDefault(Request request, String defaultPageName) {
 //...
 ```
 
 ## 개념적 유사성
+
+어떤 코드는 개념적인 친화도가 높기 때문에 서로 끌어당긴다. 친화도가 높을 수록 코드를 가까이 배치해야 한다.
+
+```java
+public class Assert {
+	static public void assertTrue(String message, boolean condition) {
+		if(!condition)
+			fail(message);
+	}
+	
+	static public void assertTrue(boolean condition) {
+		assertTrue(null, condition);
+	}
+}
+```
+
+### 세로 순서
+
+일반적으로 함수 호출 종속성은 아래 방향으로 유지한다. **호출되는 함수를 호출하는 함수보다 나중에 배치**한다. 그러면 소스 코드 모듈이 고차원에서 저차원으로 자연스럽게 내려간다.
+
+```java
+// 호출하는 함수
+public void analyzeFile(File javaFile) throws Exception {
+  BufferedReader br = new BufferedReader(new FileReader(javaFile));
+  String line;
+  while ((line = br.readLine()) != null)
+    measureLine(line);
+}
+
+// 호출되는 함수
+private void measureLine(String line) {
+  lineCount++;
+  int lineSize = line.length();
+  totalChars += lineSize;
+  lineWidthHistogram.addLine(lineSize, lineCount);
+  recordWidestLine(lineSize);
+}
+```
+
+## 가로 형식 맞추기
+
+프로그래머는 통계상으로 짧은 행을 선호한다. 저자는 최대 120 자 정도로 행 길이를 제한한다고 한다.
+
+### 가로 공백과 밀집도
+
+할당 연산자는 왼쪽 요소와 오른쪽 요소가 분명히 나뉘기 때문에 공백을 통해 주요 요소가 확실히 나뉜다는 것을 분명하게 표현한다.
+
+```java
+int lineSize = line.length();
+```
+
+반면, 함수 이름과 이어지는 괄호 사이(인수)는 서로 밀접하기 때문에 공백을 넣지 않는다. 그리고 쉼표를 통해 인수가 별개라는 사실을 보여주기 위해 공백을 추가한다.
+
+```java
+lineWidthHistogram.addLine(lineSize, lineCount);
+```
+
+### 가로 정렬
+
+가로 정렬은 엉뚱한 부분을 강조하기 때문에 유용하지 못한다.
+
+### 들여쓰기
+
+들여쓰기한 파일은 구조가 한눈에 들어온다. 변수, 생성자 함수, 접근자 함수, 메서드가 금방보인다.
+
+반면 들여쓰기 하지 않는 코드를 읽는 것은 거의 불가하다고 볼 수 있다.
+
+### 들여쓰기 무시하기
+
+```java
+public class CommentWidget extends TextWidget {
+  public static final String REGEXP = "^#[^\r\n]*(?:(?:\r\n)|\n|\r)?";
+
+  public CommentWidget(ParentWidget parent, String text){super(parent, text);}
+  public String render() throws Exception {return ""; }
+}
+```
+
+들여쓰기를 사용하여 훨씬 더 보기 좋은 코드를 작성할 수 있다. 단순히 행이 짧은 코드가 좋은 코드는 아니다.
+
+```java
+public class CommentWidget extends TextWidget {
+  public static final String REGEXP = "^#[^\r\n]*(?:(?:\r\n)|\n|\r)?";
+
+  public CommentWidget(ParentWidget parent, String text) {
+    super(parent, text);
+  }
+  
+  public String render() throws Exception {
+    return "";
+  }
+}
+```
+
+### 가짜 범위
+
+세미콜론은 새 행에다 제대로 넣어줘야 한다. 그렇지 않으면 눈에 띄지 않기 때문이다.
+
+```java
+while(dis.read(buf, 0, readBufferSize) != -1)
+;
+```
+
+### 팀 규칙
+
+팀은 한 가지 규칙에 합의해야 하고, 개개인이 따로 맘대로 짜는 코드는 피해야 한다. 그래야 소프트웨어가 일관적인 스타일을 보인다.
+
+따라서 온갖 스타일을 뒤섞어 소스 코드를 필요 이상으로 복잡하게 만드는 실수는 반드시 피해야 한다.
+
+### 밥 아저씨의 형식 규칙
+
+```java
+public class CodeAnalyzer implements JavaFileAnalysis {
+  private int lineCount;
+  private int maxLineWidth;
+  private int widestLineNumber;
+  private LineWidthHistogram lineWidthHistogram;
+  private int totalChars;
+
+  public CodeAnalyzer() {
+    lineWidthHistogram = new LineWidthHistogram();
+  }
+
+  public static List<File> findJavaFiles(File parentDirectory) {
+    List<File> files = new ArrayList<File>();
+    findJavaFiles(parentDirectory, files);
+    return files;
+  }
+
+  private static void findJavaFiles(File parentDirectory, List<File> files) {
+    for (File file : parentDirectory.listFiles()) {
+      if (file.getName().endsWith(".java"))
+        files.add(file);
+      else if (file.isDirectory())
+        findJavaFiles(file, files);
+    }
+  }
+
+  public void analyzeFile(File javaFile) throws Exception {
+    BufferedReader br = new BufferedReader(new FileReader(javaFile));
+    String line;
+    while ((line = br.readLine()) != null)
+      measureLine(line);
+  }
+
+  private void measureLine(String line) {
+    lineCount++;
+    int lineSize = line.length();
+    totalChars += lineSize;
+    lineWidthHistogram.addLine(lineSize, lineCount);
+    recordWidestLine(lineSize);
+  }
+
+  private void recordWidestLine(int lineSize) {
+    if (lineSize > maxLineWidth) {
+      maxLineWidth = lineSize;
+      widestLineNumber = lineCount;
+    }
+  }
+
+  public int getLineCount() {
+    return lineCount;
+  }
+
+  public int getMaxLineWidth() {
+    return maxLineWidth;
+  }
+
+  public int getWidestLineNumber() {
+    return widestLineNumber;
+  }
+
+  public LineWidthHistogram getLineWidthHistogram() {
+    return lineWidthHistogram;
+  }
+
+  public double getMeanLineWidth() {
+    return (double)totalChars/lineCount;
+  }
+
+  public int getMedianLineWidth() {
+    Integer[] sortedWidths = getSortedWidths();
+    int cumulativeLineCount = 0;
+    for (int width : sortedWidths) {
+      cumulativeLineCount += lineCountForWidth(width);
+      if (cumulativeLineCount > lineCount/2)
+        return width;
+    }
+    throw new Error("Cannot get here");
+  }
+
+  private int lineCountForWidth(int width) {
+    return lineWidthHistogram.getLinesforWidth(width).size();
+  }
+
+  private Integer[] getSortedWidths() {
+    Set<Integer> widths = lineWidthHistogram.getWidths();
+    Integer[] sortedWidths = (widths.toArray(new Integer[0]));
+    Arrays.sort(sortedWidths);
+    return sortedWidths;
+  }
+}
+```
