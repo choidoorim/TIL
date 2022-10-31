@@ -69,7 +69,7 @@ for (const state of states) {
 
 하지만 타입을 지정해준다면 오류를 찾을 수 있다.
 
-![Untitled](1%E1%84%8C%E1%85%A1%E1%86%BC%20-%20%E1%84%90%E1%85%A1%E1%84%8B%E1%85%B5%E1%86%B8%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%B8%E1%84%90%E1%85%B3%20%E1%84%8B%E1%85%A1%E1%86%AF%E1%84%8B%E1%85%A1%E1%84%87%E1%85%A9%E1%84%80%E1%85%B5%20ab3e44944018436b858473cb6a6b083c/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/63203480/199016091-4721fef5-d86e-4697-a312-c5963edd3e4f.png)
 
 타입스크립트 타입 시스템은 자바스크립트의 런타임 동작을 **모델링** 한다.
 
@@ -315,7 +315,8 @@ const twelve = add('1', '2');
 
 ## 4. 구조적 타이핑에 익숙해지기
 
-자바스크립트는 [덕타이핑](https://ko.wikipedia.org/wiki/%EB%8D%95_%ED%83%80%EC%9D%B4%ED%95%91)(객체의 변수 및 메소드의 집합이 객체의 타입을 결정하는 것) 기반이다. 매개변수 값이 요구사항을 만족한다면 타업이 무엇인지 신경 쓰지 않는 동작을 그대로 모델링 한다.
+자바스크립트는 [덕타이핑](https://ko.wikipedia.org/wiki/%EB%8D%95_%ED%83%80%EC%9D%B4%ED%95%91)(객체의 변수 및 메소드의 집합이 객체의 타입을 결정하는 것) 기반이다.     
+매개변수 값이 요구사항을 만족한다면 타업이 무엇인지 신경 쓰지 않는 동작을 그대로 모델링 한다.
 
 ```tsx
 interface Vector2D {
@@ -338,7 +339,8 @@ calculateLength(v); // 5
 
 위 코드에서 `NameVector` 와 `Vector2D` 타입이 다른데 `calculateLength` 메서드가 문제 없이 실행된다. 그 이유는 `NameVector` 구조가 `Vector2D` 와 호환이 되기 때문에 `calculateLength` 메서드가 호출될 수 있는 것이다.
 
-여기서 구조적 타이핑(structure typing) 이라는 용어가 사용된다. 명시적 선언이나 이름을 기반으로 하는 **명목적 타입 시스템(Nominal Type System)** 인 Java, C#등과 다르고, 런타임에 타입을 체크하는 덕 타이핑과 다른 것이다.
+여기서 구조적 타이핑(structure typing) 이라는 용어가 사용된다. 
+명시적 선언이나 이름을 기반으로 하는 **명목적 타입 시스템(Nominal Type System)** 인 Java, C#등과 다르고, 런타임에 타입을 체크하는 덕 타이핑과 다른 것이다.
 
 ```tsx
 interface Vector2D {
@@ -453,3 +455,64 @@ calculateAge(birthDate);
 위의 코드는 타입체커에서 문제로 인식하지 못한다. `calculateAge` 함수의 조건을 무시하게 된다. 이렇게 타입이 불일치하는 상황이 많아지면 다른 곳에서 문제를 일으키는 상황이 많이 발생하게 될 것이다.
 
 ### any 타입에는 언어 서비스가 적용되지 않는다
+
+타입이 있다면 언어 서비스는 자동완성 기능을 제공해준다. 하지만 any 타입을 사용하면 아무런 도움도 받을 수 없다.
+
+```tsx
+interface Person {
+  name: string;
+  age: number;
+}
+
+const person1: Person = { name: 'choi', age: 11 }
+const person2: any = { name: 'choi', age: 11 }
+```
+
+위의 코드에서 Person 타입에 name 을 firstName 으로 바꾸기 위해서 편집기의 Rename 기능을 사용하면 any 타입의 person2 는 아무런 기능도 제공받지 못하게 된다.
+
+![Untitled 1](https://user-images.githubusercontent.com/63203480/199016144-7048061c-6905-42cf-b6c6-c11e86b3f1c1.png)
+
+### any 타입은 코드 리팩터링 때 코드를 감춥니다
+
+```tsx
+interface ComponentProps {
+  onSelectItem: (item: any) => void;
+}
+
+function renderSelector(props: ComponentProps): null {
+  return null;
+}
+
+let selectedId: number = 1;
+function handleSelectItem(item: any) {
+  selectedId = item.id;
+}
+
+renderSelector({onSelectItem: handleSelectItem});
+```
+
+`item` 의 타입을 알 수 없는 상황이기에 `any` 타입으로 선언을 했다. 이 상황에서 `ComponentProps` 타입을 아래와 바꾸면 어떻게 될까?
+
+```tsx
+interface ComponentProps {
+  onSelectItem: (id: number) => void;
+}
+```
+
+`handleSelectItem` 메서드의 매개변수는 `any` 타입을 받고 있기에 문제가 발생하지 않는다. 만약 `any` 타입을 사용하지 않았다면 타입 체커가 문제를 발견했을 것이다
+
+### any는 타입 설계를 감춰버립니다
+
+객체를 정의할 때, 상태 객체의 설계를 감춰버리기 때문에 문제가 생긴다.
+
+- 객체의 상태: 특정 시점에 객체가 가지고 있는 정보의 집합으로 객체의 구조적 특징
+
+깔끔하고 정확하고 명료한 코드 작성을 위해 제대로된 타입설계는 필수이다. `any` 타입을 사용하면 타입의 설계가 불분명해진다. 협력하기 위해서는 설계가 명확히 보이도록 타입을 일일이 작성하는 것이 좋다.
+
+### any 는 타입시스템의 신뢰도를 떨어트린다
+
+사람은 항상 실수하기에 타입 체커가 실수를 잡아주고 코드의 신뢰도를 높여준다. any 타입을 사용하지 않는다면 **런타임에서 발견될 오류를 미리 잡고 신뢰도를 높일 수 있다**.
+
+그리고 any 타입은 자바스크립트를 사용하는 것보다 더 힘든 상황을 만들 수 있다.
+
+하지만 어쩔 수 없이 any 타입을 사용해야만 하는 경우도 존재한다.
