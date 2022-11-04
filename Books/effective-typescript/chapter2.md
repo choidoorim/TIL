@@ -16,7 +16,7 @@
 
 가장 작은 집합은 **아무것도 포함하지 않는 공집합**이며, 타입스크립트에서는 `never` 타입이다.
 
-```typescript
+```tsx
 const num: never = 1;
 // ERROR - TS2322: Type 'number' is not assignable to type 'never'.
 ```
@@ -25,7 +25,7 @@ never 타입으로 선언된 변수의 범위는 공집합이기 때문에 아�
 
 그 다음으로 작은 집합은 **한가지 값만 포함하는 타입**이다. 타입스크립트에서 유닛이라고 불리는 리터널 타입이다.
 
-```typescript
+```tsx
 type A = 'A';
 type B = 'B';
 type Twelve = 12;
@@ -36,7 +36,7 @@ const num: Twelve = 11;
 
 2, 3개로 묶기 위해서는 유니온 타입을 사용해야 한다.
 
-```typescript
+```tsx
 type AB = 'A' | 'B';
 type AB12 = 'A' | 'B' | 12;
 
@@ -48,7 +48,7 @@ const word: AB12 = 13;
 
 집합의 관점에서 타입체커는 **하나의 집합이 다른 집합의 부분 집합인지 검사하는 것**이라고 볼 수 있다.
 
-```typescript
+```tsx
 type AB = 'A' | 'B';
 type AB12 = 'A' | 'B' | 12;
 const ab: AB = Math.random() < 0.5 ? 'A' : 'B'; // 정상
@@ -57,7 +57,7 @@ const ab12: AB12 = ab; // 정상
 
 구조적 타이핑 규칙들은 **어떠한 값이 다른 속성도 가질 수 있음을 의미**한다. 심지어 함수 호출의 매개변수에서도 다른 속성을 가질 수 있습니다.
 
-```typescript
+```tsx
 interface Person {
   name: string;
 	age: number;
@@ -93,7 +93,7 @@ const ps: PersonSpan = {
 
 조금 더 일반적으로 `PersonSpan` 타입을 지정하는 방법은 `extends` 키워드를 사용하는 것이다.
 
-```typescript
+```tsx
 interface Person {
   name: string;
 }
@@ -106,7 +106,7 @@ interface PersonSpan extends Person {
 
 서브 타입이란 어떤 집합이 다른 집합의 부분 집합이라는 것이다.
 
-```typescript
+```tsx
 interface VectorlD { 
 	x: number; 
 }
@@ -124,7 +124,7 @@ Vector3D는 Vector2D의 서브타입이고, Vector2D는 VectorlD의 서브타입
 
 `extends` 는 제네릭 타입에서 한정자(어떤 대상 값을 **불가시키기 위해** 사용하는 것)로도 쓰이며, “~의 부분집합” 을 의미하기도 한다.
 
-```typescript
+```tsx
 function getKey<K extends string>(val: any, key: K) {
 	//...
 }
@@ -138,7 +138,7 @@ string을 상속(`<K extends string>`)한다는 의미는 string 의 부분집�
 
 위의 코드에서 `getKey({}, 12);` 오류 중 ‘할당할 수 없습니다’ 는 ‘상속할 수 없습니다’ 로 바꿀 수 있다.
 
-```typescript
+```tsx
 // ERROR
 const list1: number[] = [1, 2];
 const tuple1: [number, number] = list1; //ERROR - S2322: Type 'number[]' is not assignable to type '[number, number]'. Target requires 2 element(s) but source may have fewer.
@@ -154,7 +154,7 @@ const list2: number[] = tuple2;
 
 합” 과 같은의미이다. 예를 들면, `<K extends string>` 에서 k 는 string 을 상속, k 는 string 에 할당 가능, K 는 string 의 서브타입, K 는 string 의 부분집합 이라는 것이다.
 
-```typescript
+```tsx
 /**
  * <K extends string>
  * 1. K 는 string 을 상속
@@ -174,7 +174,7 @@ const c: string = a;
 
 심벌은 이름이 같더라도 속하는 공간에 따라 다른 것을 나타낼 수 있기 때문에 혼란스러울 수 있다.
 
-```typescript
+```tsx
 interface Cylinder {
   radius: number;
   height: number;
@@ -195,7 +195,7 @@ Cylinder 는 타입(`interface Cylinder`)으로도 쓰이고 값(`const Cylinder
 
 자바스크립트에서는 객체 내의 각 속성을 로컬 변수로 만들어주는 **구조분해(Destructuring) 할당**을 사용할 수 있다.
 
-```typescript
+```tsx
 /**
  * ERROR
  * TS7031: Binding element 'Person' implicitly has an 'any' type.
@@ -209,7 +209,7 @@ function email({ person: Person, subject: string, body: string, }) {
 
 하지만 타입스크립트에서 구조분해를 사용하려면 이상한 오류가 발생한다. Person이라는 변수명과 string이라는 이름을 가지는 두 개의 변수를 생성하려고 했기 때문입니다.
 
-```typescript
+```tsx
 function email({ person, subject, body, }: { person: Person, subject: string, body: string }) {
   //...
 }
@@ -223,7 +223,7 @@ function email({ person, subject, body, }: { person: Person, subject: string, bo
 
 타입스크립트에서 변수에 값을 할당하고 타입을 부여하는 방법은 2 가지이다.
 
-```typescript
+```tsx
 interface Person {
   name: string;
 }
@@ -234,7 +234,7 @@ const bob = { name: 'Bob' } as Person;   // 타입단언
 
 타입 선언은 할당되는 값이 해당 타입을 만족하는지 검사한다. 하지만 타입 단언은 강제로 타입을 지정했기 때문에 타입 체커에서 오류를 무시하라고 해서 오류를 발생시키지 않는다.
 
-```typescript
+```tsx
 interface Person {
   name: string;
 }
@@ -245,7 +245,7 @@ const bob = {} as Person; // 오류 X
 
 이와 같은 문제는 속성을 추가할 때도 발생한다.
 
-```typescript
+```tsx
 interface Person {
   name: string;
 }
@@ -261,14 +261,14 @@ const bob = { name: 'Alice', age: 11 } as Person;
 
 화살표 함수의 타입 선언은 추론된 타입이 모호할 때가 있다.
 
-```typescript
+```tsx
 const people = ['alice', 'bob', 'jan'].map(name => ({name}));
 // type - const people: {name: string}[]
 ```
 
 이럴 경우 타입 단언을 사용하면 문제가 해결되기는 하지만 위의 예제처럼 문제를 잡지못하는 일이 발생한다.
 
-```typescript
+```tsx
 const people = ['alice', 'bob', 'jan'].map(name => ({name}) as Person);
 // type - Person[]
 
@@ -277,7 +277,7 @@ const people = ['alice', 'bob', 'jan'].map(name => ({}) as Person); // 오류 X
 
 따라서 타입 선언을 통해 타입을 정의해주는 것이 좋다.
 
-```typescript
+```tsx
 // 반환 타입 명시
 const people = ['alice', 'bob', 'jan'].map((name: string): Person => ({name}));
 // 최종적으로 원하는 타입을 명시
@@ -295,7 +295,7 @@ const people: Person[] = ['alice', 'bob', 'jan'].map(name => ({name}));
 
 예를 들면 기본형 string 의 경우 메서드를 가지고 있는 것처럼 보인다.
 
-```typescript
+```tsx
 let str: string = 'string';
 str.charAt(3)
 ```
@@ -306,7 +306,7 @@ str.charAt(3)
 
 `String.prototype` 을 몽키 패치한다면 내부 동작을 확인할 수 있다.
 
-```typescript
+```tsx
 // 몽키패치: 런타임의 프로그램 기능을 수정해서 사용하는 기법, 자바스크립트에서는 주로 프로토타입을 수정
 const originalCharAt = String.prototype.charAt;
 
@@ -319,7 +319,7 @@ console.log('primitive' .charAt(3)); // m
 
 하지만 `string` 과 `String` 은 항상 동일하게 동작하지 않는다.
 
-```typescript
+```tsx
 typeof "hello" // string
 typeof new String("hello") // object
 
@@ -329,7 +329,7 @@ console.log(new String("hello") === new String("hello")) // false
 
 또한 객체 래퍼 타입은 당황스러운 동작을 보여질 때도 있다. 예를 들어 어떤 속성이 기본형에 할당된다면 사라진다.
 
-```javascript
+```jsx
 let x = 'hello';
 x.language = 'English';
 console.log(x.language); // undefined
@@ -345,7 +345,7 @@ null 과 undefined 타입을 제외하면 모든 타입에 객체 래퍼 타입�
 
 타입스크립트는 기본형과 객체 래퍼 타입을 별도로 모델링한다. 그런데 string 을 사용할 때 주의할 점이 있다.
 
-```typescript
+```tsx
 function getStringLen(foo: String) {
   return foo.length;
 }
@@ -360,7 +360,7 @@ function isGreeting(phrase: String) {
 
 string 을 매개변수로 받는 메서드에 String 객체를 전달하는 순간 문제가 발생한다.
 
-```typescript
+```tsx
 function isGreeting(phrase: String) {
   return ['hello', 'good day'].includes(phrase); // TS2345: Argument of type 'String' is not assignable to parameter of type 'string'.   'string' is a primitive, but 'String' is a wrapper object. Prefer using 'string' when possible.
 }
@@ -378,7 +378,7 @@ console.log(sayHello(hello)) // TS2345: Argument of type 'String' is not assigna
 
 그러나 `**new` 키워드 없이 `BigInt` 나 `Symbol` 을 호출하는 경우**는 기본형을 생성하기 때문에 괜찮다.
 
-```typescript
+```tsx
 const hello1 = new String('hello')
 const hello2 = String('hello')
 
@@ -390,7 +390,7 @@ console.log(typeof hello2); // string
 
 타입이 선언된 변수에 객체 리터널을 할당할 때, 타입스크립트는 **해당 타입의 속성이 있는지**, 그리고 **그 외의 속성은 없는지**를 확인한다.
 
-```typescript
+```tsx
 // EX1
 interface Room {
   numDoors: number;
@@ -406,7 +406,7 @@ const room: Room = {
 
 구조적 타이핑 관점에서는 오류가 발생하지 않아야 한다. 반대로 room 타입의 변수에 임시 변수를 도입해보면 문제가 없는 것을 확인할 수 있다.
 
-```typescript
+```tsx
 // EX2
 interface Room {
   numDoors: number;
@@ -428,7 +428,7 @@ obj 타입은 `{numDoors: number, ceilingHeightFt: number, elephant: string}` �
 
 타입스크립트는 런타임에 오류를 표시하는 것뿐만이 아니라, 의도와 다르게 작성된 코드까지 찾으려 한다.
 
-```typescript
+```java
 interface Options {
   title: string;
   darkMode?: boolean;
@@ -449,7 +449,7 @@ createWindow({
 
 하지만 `Options` 타입의 범위는 상당히 넓다. darkMode 속성에 `boolean` 타입이 아닌 다른 값이 지정된 경우를 제외하면, `**string` 타입의 title 속성과 또 다른 속성을 가지고 있는 모든 객체는 `Options` 타입범위에 속한다**.
 
-```typescript
+```tsx
 interface Options {
   title: string;
   darkMode?: boolean;
@@ -463,7 +463,7 @@ const o2: Options = new HTMLAnchorElement;
 
 **잉여 속성 체크를 사용한다면 기본적으로 타입 시스템의 구조적인 본질을 해치지 않고, 객체 리터널에 알 수 없는 속성을 허용하지 않으면서 위의 문제점들을 방지**할 수 있다.
 
-```typescript
+```tsx
 const o1: Options = { darkmode: true, title: 'Sko Free' }; // 오류
 // TS2322: Type '{ darkmode: boolean; title: string; }' is not assignable to type 'Options'.   Object literal may only specify known properties, but 'darkmode' does not exist in type 'Options'. Did you mean to write 'darkMode'?
 
@@ -475,7 +475,7 @@ const o2: Options = intermediate;
 
 [타입 스크립트에서는 신선도(Freshness)](https://radlohead.gitbook.io/typescript-deep-dive/type-system/freshness)라는 개념을 제공한다. 모든 객체 리터널은 초기에 `fresh` 하다고 간주되며, 1) 타입 단언(type assertion)을 하거나, 2) 타입 추론에 의해 object literal의 타입이 확장되면 `freshness`가 사라지게 된다. 특정 변수에 객체 리터널을 할당할 경우 2 가지중 한가지가 발생하게 되므로 `freshness` 가 사라지게 되고, **함수에 인자로 객체 리터널을 할당할 경우 `fresh` 한 상태로 전달**되게 된다.
 
-```typescript
+```tsx
 // 출처: https://toss.tech/article/typescript-type-compatibility
 type Food = {
   protein: number;
@@ -512,7 +512,7 @@ const calorie2 = calculateCalorie({
 
 잉여 속성 체크는 타입 단언문을 사용할 때도 적용되지 않는다.
 
-```typescript
+```tsx
 const o: Options = { darkmode: true, title: 'Sko Free' } as Options; // 정상
 ```
 
@@ -520,7 +520,7 @@ const o: Options = { darkmode: true, title: 'Sko Free' } as Options; // 정상
 
 약한(weak) 타입에서도 비슷한 체크가 작동한다.
 
-```typescript
+```tsx
 interface LineChartOptions {
   logscale?: boolean;
   invertedYAxis?: boolean;
@@ -534,3 +534,103 @@ const op: LineChartOptions = opts; // TS2559: Type '{ logScale: boolean; }' has 
 구조적 관점에서 LineChartOptions 타입은 모든 속성이 선택적인 약한 타입이므로 **타입스크립트는 값 타입과 선언 타입에 공통된 속성이 있는지 확인하는 별도의 체크를 수행**한다.
 
 잉여 속성 체크는 구조적 타이핑 시스템에서 허용되는 속성 이름의 오타같은 실수를 바로 잡는데 효과적이다.
+
+선택적 필드를 포함하는 Options 와 같은 타입에는 유용하지만, 적용범위도 제한적이고 오직 객체 리터널에만 적용된다.
+
+## 12. 함수 표현식에 타입 적용하기
+
+자바스크립트와 타입스크립트에서는 함수 문장(statement)과 함수 표현식(expression)을 다르게 인식한다.
+
+```tsx
+function rollDice1(sides: number): number { /* ... */ }           // 문장
+const rollDice2 = function(sides: number): number { /* ... */ }   // 표현식
+const rollDice3 = (sides: number):number => { /* ... */ };        // 표현식
+```
+
+타입스크립트에서는 함수 표현식을 사용하는 것이 좋다. 함수의 매개변수부터 반환값까지 전체를 함수 타입으로 선언하여 함수 표현식에 재사용할 수 있기 때문이다.
+
+```tsx
+type RollDice = (sides: number) => number;
+
+// TS2322: Type '(sides: string) => number' is not assignable to type 'RollDice'.   Types of parameters 'sides' and 'sides' are incompatible.     Type 'number' is not assignable to type 'string'.
+const rollDice2: RollDice = function(sides: string): number { /* ... */ } // Error
+const rollDice3: RollDice = sides => { 
+  return 1;
+}; // Ok
+```
+
+sides 인자에 마우스를 올려놓고 확인해보면 이미 `number` 타입으로 추론하고 있는 것을 확인할 수 있다.
+
+### 장점 1
+
+불필요한 타입의 선언을 줄여준다.
+
+```tsx
+function add(a: number, b: number) {
+  return a + b;
+}
+function sub(a: number, b: number) {
+  return a - b;
+}
+function mul(a: number, b: number) {
+  return a * b;
+}
+function div(a: number, b: number) {
+  return a / b;
+}
+
+// 타입 적용
+type BinaryFn = (a: number, b: number) => number;
+const add1: BinaryFn = (a, b) => a + b
+const sub1: BinaryFn = (a, b) => a - b
+const mul1: BinaryFn = (a, b) => a * b
+const div1: BinaryFn = (a, b) => a / b
+```
+
+위처럼 반복되는 함수 형식을 하나의 함수 타입으로 통합할 수도 있다. 또한 타입 구문이 적어지고, 로직이 분명하게 드러나는 장점이 있다.
+
+```tsx
+async function checkedFetch(input: RequestInfo, init?: RequestInit) {
+  const response = await fetch(input, init);
+  if(!response.ok) {
+    return new Error();
+  }
+  return response;
+}
+//------------------------
+const checkedFetch: typeof fetch = async (input, init) => {
+	// TS2322: Type '(input: RequestInfo | URL, init: RequestInit) => Promise<Error | Response>' is not assignable to type '(input: RequestInfo | URL, init?: RequestInit) => Promise<Response>'.
+	// Type 'Promise<Error | Response>' is not assignable to type 'Promise<Response>'.
+	// Type 'Error | Response' is not assignable to type 'Response'.
+	// Type 'Error' is missing the following properties from type 'Response': headers, ok, redirected, status, and 11 more.
+  const response = await fetch(input, init);
+  if(!response.ok) {
+    return new Error(); // 문제점
+  } 
+  return response;
+}
+```
+
+만약 함수 문장을 표현식으로 바꾸고 타입을 지정해주면 인자(`input, init`) 의 타입을 추론할 수 있고, 함수(`checkedFetch`) 의 반환타입을 보장하게 된다. 예를 들어 위처럼 throw 를 사용하지 않고 return 을 사용하게 되면 타입스크립트가 실수를 잡아낸다.
+
+함수의 매개변수에 타입을 선언하기보다, **함수 표현식 전체 타입을 정의하는 것이 코드도 간결해지고 안전**하다.
+
+- 다른 함수의 시그니처를 사용하려면 `typeof fn` 을 사용하면 된다.
+
+## 13. 타입과 인터페이스의 차이점 알기
+
+타입스크립트에서 Named Type(명명된 타입)은 2 가지가 있다.
+
+```tsx
+type TState = {
+  name: string;
+  capital: string;
+}
+
+interface IState {
+  name: string;
+  capital: string;
+}
+```
+
+클래스를 사용해서도 가능하지만 클래스는 값으로도 쓰일 수 있는 자바스크립트 런타임의 개념이다.
