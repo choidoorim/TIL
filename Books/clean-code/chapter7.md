@@ -152,3 +152,24 @@ public List<Employee> getEmployees() {
 ## null 을 전달하지 마라
 
 메서드에서 null 을 반환하는 방식도 나쁘지만 메서드로 null 을 전달하는 방식은 더 나쁘다. 정상적인 인수로 null 을 기대하는 API 가 아니라면 메서드로 null 을 전달하는 코드는 최대한 피해야 한다.
+
+두 지점 사이의 거리를 계산하는 메서드가 있다.
+
+```java
+public class MetricsCalculator {
+	public double xProjection(Point p1, Point p2) {
+		return (p2.x - p1.x) * 1.5;
+	}
+	//...
+}
+```
+
+누군가가 null 을 전달하면 어떻게 될까?
+
+```java
+calculator.xProjection(null, new Point(12, 13));
+```
+
+`NullPointerException` 이 발생한다.  새로운 예외 유형을 만들어 던지는 방법과 assert 문을 사용하는 등, 해결할 수 있는 방법들이 있다. 대다수의 프로그래밍 언어는 호출자가 실수로 넘기는 null 을 적절하게 처리할 수 있는 방법이 없다. 즉, 인수로 null 이 넘어오면 코드에 문제가 있다고 봐도 된다.
+
+깨끗한 코드는 읽기도 좋아야 하지만 안정성도 높아야 한다. **오류 처리를 프로그램 논리와 분리해 독자적인 사안으로 고려**하면 튼튼하고 깨끗한 코드를 작성할 수 있다. 또한 코드의 유지보수성도 크게 높아진다.
