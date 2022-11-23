@@ -42,7 +42,7 @@ ES5 또는 더 이전 버전을 대상을 할 때, 타입스크립트 컴파일�
 
 콜백보다는 `Promise` 나 `async/await` 를 사용해야 하는 이유는 **코드를 작성하기 용이**하고 **타입을 추론**하기 쉽기 때문이다.
 
-`[Promise.race](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/race)` 도 타입추론과 잘 맞는다. `Promise.race` 에 timeout 을 추가하는 패턴을 흔하게 사용하는 패턴이다.
+[Promise.race](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise/race) 도 타입추론과 잘 맞는다. `Promise.race` 에 timeout 을 추가하는 패턴을 흔하게 사용하는 패턴이다.
 
 ```tsx
 function timeout(millis: number): Promise<never> {
