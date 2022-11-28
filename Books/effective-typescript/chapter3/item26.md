@@ -105,7 +105,7 @@ const loc = [10, 20] as const;
 panTo(loc);
 ```
 
-`as const` 는 문맥에 관련된 문제를 해결할 수 있지만 한 가지 단점을 가지고 있다.
+as const 는 문맥에 관련된 문제들을 해결할 수 있지만 한 가지 단점을 가지고 있다.
 
 ```tsx
 function panTo(where: readonly [number, number]) {}
@@ -114,4 +114,87 @@ const loc = [10, 20, 30] as const; // ERROR(X)
 panTo(loc); // ERROR(O)
 ```
 
-만약 타입 정의에 실수가 있을 경우 오류는 타입을 정의한 곳이 아닌 호출하는 곳에서 발생하게 된다.
+만약 타입 정의에 실수가 있을 경우 오류는 타입을 정의한 곳이 아닌 호출하는 곳에서 발생한다.
+
+## 객체 사용 시 주의점
+
+문맥에서 값을 분리하는 문제는 문자열 리터널이나 튜플을 포함하는 큰 객체에서 상수를 뽑아낼 때도 발생한다.
+
+```tsx
+type Language = 'Javascript' | 'Typescript' | 'Java';
+
+interface GovernedLanguage {
+  language: Language;
+  organization: string;
+}
+
+function complain(language: GovernedLanguage) {}
+
+complain({ language: 'Typescript', organization: 'Microsoft' });
+
+const ts = {
+  language: 'Typescript',
+  organization: 'Microsoft'
+}
+
+complain(ts); // Error - TS2345
+```
+
+이 문제는 **타입 선언**이나 **상수 단언(`as const`)**으로 해결할 수 있다.
+
+```tsx
+// 타입 선언
+const ts: GovernedLanguage = {
+  language: 'Typescript',
+  organization: 'Microsoft'
+}
+
+// 상수 단언
+const ts = {
+  language: 'Typescript',
+  organization: 'Microsoft'
+} as const
+```
+
+## 콜백 사용 시 주의점
+
+콜백의 매개변수 타입을 추론하기 위해서 문맥을 사용한다.
+
+```tsx
+function callWithRandomNumbers(fn: (n1: number, n2: number) => void) {
+  fn(Math.random(), Math.random());
+}
+
+callWithRandomNumbers((a, b) => {
+  console.log(a + b);
+});
+
+const fn = (a, b) => {
+  a; // type - any
+  b; // type - any
+  console.log(a + b);
+}
+callWithRandomNumbers(fn);
+```
+
+콜백을 상수로 뽑아내게 되면 문맥이 소실되고 nolmplicitAny 에러가 발생하게 된다. 이런 경우에 매개변수에 타입을 추가해서 해결할 수 있다.
+
+```tsx
+const fn = (a: number, b: number) => {
+  console.log(a + b);
+}
+callWithRandomNumbers(fn);
+```
+
+가능한 경우에 전체 함수 표현식에 타입 선언을 하는 것이 좋다.
+
+```tsx
+function callWithRandomNumbers(fn: CallWithRandomNumbers) {
+  fn(Math.random(), Math.random());
+}
+type CallWithRandomNumbers = (n1: number, n2: number) => void
+const fn: CallWithRandomNumbers = (a, b) => {
+  console.log(a + b);
+}
+callWithRandomNumbers(fn);
+```
