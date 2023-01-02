@@ -148,9 +148,16 @@ function addKeyListener(
   fn:(this: HTMLElement, e: KeyboardEvent) => void
 ) {
   el.addEventListener('keydown', e => {
-    fn(el, e); // TS2554: Expected 1 arguments, but got 2.
-		fn(e); // TS2684: The 'this' context of type 'void' is not assignable to method's 'this' of type 'HTMLElement'.
+    fn.call(el, e);
   });
+}
+
+class Foo {
+  registerHandler(el: HTMLElement) {
+    addKeyListener(el, e => {
+      this.innerHTML; // TS2339: Property 'innerHTML' does not exist on type 'Foo'
+    })
+  }
 }
 ```
 
