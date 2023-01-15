@@ -75,3 +75,87 @@ let flavor2: Flavor = 'mint chip'; // TS2322: Type '"mint chip"' is not assignab
 리터럴 타입의 유니온은 Enum 만큼이나 안전하며 자바스크립트와 호환되는 장점이 있다. 그리고 IDE 에서 자동완성 기능도 사용할 수 있다.
 
 ## 매개변수 속성
+
+클래스를 초기화할 때 속성을 할당하기 위해 생성자의 매개변수를 사용한다.
+
+```tsx
+class Person {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+```
+
+타입스크립트는 더 간결한 문법을 제공한다.
+
+```tsx
+class Person {
+  constructor(public name: string) {}
+}
+```
+
+위, 아래 `Person` 객체는 동일하게 동작한다. 그러나 매개변수 속성과 관련된 몇 가지 문제점이 존재한다.
+
+```tsx
+// 일반 속성
+class Person {
+  name: string;
+  constructor(name: string) {
+		this.name = name;
+  }
+}
+// 매개변수 속성
+class Person {
+  constructor(public name: string) {}
+}
+```
+
+- 타입스크립트 컴파일은 타입 제거가 이뤄지기 때문에 코드가 줄어들지만, 매개변수 속성은 코드가 늘어나는 문법이다.
+- 매개변수 속성이 **런타임에는 실제로 사용되지만, 타입스크립트 관점에서는 사용되지 않는 것처럼** 보인다.
+- 매개변수 속성과 일반 속성을 섞어서 사용하면 클래스의 설계가 혼란스러워진다.
+
+아래는 NestJS 에서 실제로 타입스크립트 코드를 컴파일한 뒤의 자바스크립트 코드이다. 매개변수 속성을 사용해도 실제로는 일반 속성으로 컴파일된 것을 확인할 수 있다.
+
+```tsx
+export class DiaryController {
+  constructor(private readonly diaryService: DiaryService) {}
+```
+
+```jsx
+let DiaryController = class DiaryController {
+    constructor(diaryService) {
+        this.diaryService = diaryService;
+    }
+//...
+```
+
+Person 클래스가 아래와 같이 있다.
+
+```tsx
+class Person {
+  first: string;
+  last: string;
+  constructor(public name: string) {
+    [this.first, this.last] = name.split(' ');
+  }
+}
+```
+
+`first, last, name` 3 가지의 속성이 있지만, `first` 와 `last` 만 속성이 정의되어있고, `name` 은 매개변수 속성에 있어서 일관성이 없다.
+
+클래스에 매개변수 속성만 존재한다면 클래스 대신 인터페이스로 만들고 객체 리터럴을 사용하는 것이 좋다. 구조적 타이핑이라는 특성 때문에 아래 예제처럼 할당할 수 있다는 점을 주의해야 한다.
+
+```tsx
+class Person {
+  constructor(public name: string) {}
+}
+const p: Person = {
+  name: 'Jed Bartlet',
+}
+```
+
+매개변수 속성을 사용하는 것은 찬반논란이 있다. 타입스크립트의 다른 패턴들과 이질적이고, 초급자에게는 생소한 문법이라는 것을 기억해야 한다. 또한 매개변수 속성과 일반 속성을 같이 사용하면 설계가 혼란스러워지기 때문에 한 가지만 사용하는 것이 좋다.
+
+## 네임스페이스와 트리플 슬래시 임포트
