@@ -103,7 +103,7 @@ class Person {
 class Person {
   name: string;
   constructor(name: string) {
-		this.name = name;
+    this.name = name;
   }
 }
 // 매개변수 속성
@@ -159,3 +159,17 @@ const p: Person = {
 매개변수 속성을 사용하는 것은 찬반논란이 있다. 타입스크립트의 다른 패턴들과 이질적이고, 초급자에게는 생소한 문법이라는 것을 기억해야 한다. 또한 매개변수 속성과 일반 속성을 같이 사용하면 설계가 혼란스러워지기 때문에 한 가지만 사용하는 것이 좋다.
 
 ## 네임스페이스와 트리플 슬래시 임포트
+
+ECMAScript 2015 이전에는 자바스크립트에 공식적인 모듈 시스템이 없었다. 그래서 각 환경마다 자신만의 방식으로 모듈 시스템을 사용했다. Node.js 는 require 와 module.export 를 사용한 반면, AMD 는 define 함수와 콜백을 사용했다.
+
+타입스크립트도 자체적으로 모듈 시스템을 구축했고, module 키워드와 트리플 슬래시 임포트를 사용했다. ECMAScript 2015 가 공식적으로 모듈 시스템을 도입한 이후, 타입스크립트는 충돌을 피하기 위해서 module 과 같은 기능을 하는 namespace 키워드를 추가했다.
+
+```tsx
+namespace foo {
+  function bar() {}
+}
+
+foo.bar();
+```
+
+트리플 슬래시 임포트와 module 키워드는 호환성을 위해 남아 있을 뿐이고, 이제는 ECMAScript 2015 스타일의 모듈(import 와 export)을 사용해야 한다.
