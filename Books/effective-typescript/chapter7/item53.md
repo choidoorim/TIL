@@ -103,7 +103,7 @@ class Person {
 class Person {
   name: string;
   constructor(name: string) {
-    this.name = name;
+		this.name = name;
   }
 }
 // 매개변수 속성
@@ -169,7 +169,41 @@ namespace foo {
   function bar() {}
 }
 
+/// <reference path="other.ts"/>
 foo.bar();
 ```
 
 트리플 슬래시 임포트와 module 키워드는 호환성을 위해 남아 있을 뿐이고, 이제는 ECMAScript 2015 스타일의 모듈(import 와 export)을 사용해야 한다.
+
+## 데코레이터
+
+데코레이터는 클래스, 메서드, 속성에 Annotation 을 붙이거나 기능을 추가하는데 사용할 수 있다.
+
+```tsx
+class Greeter {
+  greeting: string;
+
+  constructor(message: string) {
+    this.greeting = message;
+  }
+
+  @logged
+  greet() {
+    return 'Hello, ' + this.greeting;
+  }
+}
+
+function logged(target: any, name: string, descriptor: PropertyDescriptor) {
+  const fn = target[name];
+  descriptor.value = function () {
+    console.log(`Calling ${name}`);
+    return fn.apply(this, arguments);
+  }
+}
+```
+
+예를 들어 greet 함수 호출 시 로그를 남기고 싶다면 logged annotation 을 정의할 수 있다.
+
+데코레이터 기능은 처음에 앵귤러 프레임워크를 지원하기 위해 추가되었다. `tsconfig.json` 에 `experimentalDecorators` 속성을 설정하고 사용해야 한다.
+
+하지만 현재까지 표준화가 완료되지 않았기 때문에, 사용 중인 데코레이터가 비표준으로 바뀌거나 호환성이 깨질 가능성이 있다. 앵귤러를 사용하거나, annotation 이 필요한 프레임워크를 사용하는게 아니라면 표준이 되기 전까지 데코레이터는 사용하지 않는 것이 좋다.
