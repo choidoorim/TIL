@@ -58,3 +58,36 @@ class Greeting {
 ```
 
 ## 타입이 바뀌는 값
+
+아래 코드는 자바스크립트에서는 문제 없지만 타입스크립트에서는 오류가 발생한다.
+
+```jsx
+const state = {}
+state.name = 'New York';
+state.capital = 'Albany';
+```
+
+```tsx
+const state = {}
+state.name = 'New york'; // Property 'name' does not exist on type '{}'
+state.capital = 'Albany'; // Property 'capital' does not exist on type '{}'.
+```
+
+위 예제와 같은 경우에는 객체를 한 번에 생성하면 간단히 오류를 해결할 수 있다.
+
+한 번에 생성하긴 어려운 경우에는 **임시 방편으로 타입 단언문**을 사용할 수 있다.
+
+```tsx
+interface State {
+  name: string;
+  capital: string;
+}
+
+const state = {} as State;
+state.name = 'New York';
+state.capital = 'Albany';
+```
+
+마이그레이션이 완료되었다면 타입 선언으로 바꿔야 한다.
+
+마지막으로 테스트 코드를 타입스크립트로 전환하면 된다. 로직 코드그 테스트 코드에 의존하지 않기 때문에, 테스트 코드는 항상 의존성 관계도의 최상단에 위치하며 마이그레이션의 마지막 단계가 되는 것은 자연스럽다. 그리고 최하단부터 마이그레이션을 전환해도 테스트 코드는 수행할 수 있었을 것이다. 마이그레이션 중에 테스트를 수행할 수 있다는 것은 엄청난 이점이다.
